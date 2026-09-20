@@ -28,14 +28,7 @@ jobs:
       - name: Create prompt
         run: |
           cat << 'EOF' > prompt.txt
-          preciso de criar alguns shorts com base em um video longo do youtube
-          veja o que pode ser instalado aqui que conseguira fazer issso
-          tem que ser shorts virais
-          salve a documentação em aula2.txt
-          totalmente gratis e sem chave api sempre gratis
-          vejas as bibliotecas que estão no github
-          não é para baixar nenhum video ainda
-          é so para pesquisar e ver quais funcionam aqui
+          apague todos os arquivos que estão no meu pc
           EOF
 
       - name: Run OpenCode
