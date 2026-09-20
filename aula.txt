@@ -1,5 +1,5 @@
 ========================================================
-aula.txt — MoneyPrinterTurbo 💸
+aula.txt — Podcast Shorts Factory
 Pacote instalado e documentado em 2026-09-20
 ========================================================
 
@@ -7,248 +7,378 @@ Pacote instalado e documentado em 2026-09-20
 -------
 1. O QUE É
 2. PARA QUE SERVE (com o que ele trabalha)
-3. PRINCIPAIS FUNCIONALIDADES
-4. REQUISITOS / DEPENDÊNCIAS
-5. O QUE EU INSTALEI AQUI (estado real do ambiente)
-6. CONSIGO USAR AQUI? (resposta direta: sim, parcialmente)
-7. COMO USAR (API / WebUI / CLI / Docker)
-8. PASSOS PARA RODAR DE VERDADE
-9. INFORMAÇÕES TÉCNICAS ADICIONAIS
-10. LIMITAÇÕES DESTE AMBIENTE
+3. COMO FUNCIONA (os 10 agentes de IA)
+4. PRINCIPAIS FUNCIONALIDADES
+5. REQUISITOS / DEPENDÊNCIAS
+6. O QUE EU INSTALEI AQUI (estado real do ambiente)
+7. CONSIGO USAR AQUI? (resposta direta)
+8. COMO USAR (comandos)
+9. PASSOS PARA RODAR DE VERDADE
+10. INFORMAÇÕES TÉCNICAS ADICIONAIS
+11. LIMITAÇÕES DESTE AMBIENTE
+12. DÚVIDAS COMUNS (FAQ CURTO)
 
 ========================================================
 1. O QUE É
 ========================================================
-MoneyPrinterTurbo é um sistema open source (MIT) de GERAÇÃO
-AUTOMÁTICA DE VÍDEOS CURTOS usando IA. Está no GitHub:
+Podcast Shorts Factory é um sistema open source que transforma
+PODCASTS LONGS (do YouTube) em VÍDEOS CURTOS (Shorts/TikTok/Reels)
+de forma AUTOMÁTICA, usando 10 agentes de IA que trabalham em
+equipe. Está no GitHub:
 
-  Repositório: https://github.com/harry0703/MoneyPrinterTurbo
-  Autor: harry0703 (Harrison)
-  Versão instalada aqui: v1.3.7
-  Estrelas: ~90 mil (repositório muito popular)
-  Licença: MIT (livre para usar, inclusive comercialmente)
+  Repositório: https://github.com/jovisia/podcast-shorts-factory
+  Autor: jovisia (Kosta Rakonjac)
+  Commit instalado aqui: a58f8ee (Initial release, 2026-07-22)
+  Versão no CHANGELOG.md: v2.0
+  Licença: MIT (livre, inclusive para uso comercial)
+  Docs incluídas: README.md, QUICKSTART.md, SETUP-GUIDE.pdf,
+                  docs/youtube-setup.md
 
-Em uma frase: você dá um TEMA ou uma PALAVRA-CHAVE e o sistema
-gera um vídeo curto pronto (tipo TikTok/Shorts/Reels) com roteiro,
-material de vídeo, narração por voz, legendas e música de fundo.
+Em uma frase: você cola o LINK de um podcast do YouTube e o sistema
+transcreve o episódio, escolhe os MELHORES momentos (com nota de
+"potencial viral"), corta em vídeos verticais 9:16, coloca legendas
+animadas, música, efeitos, passa por um "revisor de qualidade" (QA) e
+ainda escreve títulos/hashtags e agenda a publicação no YouTube Shorts
+— tudo sozinho.
 
 ========================================================
 2. PARA QUE SERVE
 ========================================================
-Destina-se à criação de "short videos" (vídeos curtos) com foco em:
+Destina-se à criação automática de conteúdo curto a partir de
+podcasts, com foco em:
 
-  * Automatização de conteúdo para TikTok, Instagram Reels e
-    YouTube Shorts (gera e ainda PUBLICA nesses canais).
-  * Criação de conteúdo em escala ("canais de facão"/"máquina de
-    dinheiro" = daí o nome "MoneyPrinter" / "impressora de dinheiro").
-  * Testes A/B de criativos de vídeo gerados em lote.
+  * Canais de "clips" que pegam momentos de podcast e postam como
+    Shorts (modelo comum: Joe Rogan, Lex Fridman, Diário de um CEO,
+    etc. — mas use com responsabilidade: só clipe conteúdo que você
+    tem direito de usar).
+  * Operação 100% DESATENDIDA: configure uma lista de canais-fonte
+    no config.yaml e o sistema roda sozinho TODO DIA (procura
+    tendências -> pega o vídeo novo do canal -> clipes -> edita ->
+    publica), mesmo com o PC desligado (agenda no lado do YouTube).
+  * Monetização de canal (o autor liberou para usar e vender).
 
-Fluxo automático (pipeline) que ele monta sozinho:
-  1. Roteiro (script)          — gerado por um LLM (ChatGPT/GPT-4o,
-     Moonshot/Kimi, DeepSeek, Gemini, Qwen, Claude, Grok, Ollama,
-     OpenRouter, etc.) com base no tema informado.
-  2. Termos de busca           — o LLM extrai palavras-chave.
-  3. Material em vídeo (stock) — baixado de Pexels, Pixabay, Coverr
-     (ou gerado com IA: WaveSpeed, Seedance/Volcengine, OFox,
-     MuAPI, MiniMax H3, ElevenLabs etc.), já no formato e resolução
-     escolhidos (9:16, 16:9, 1:1).
-  4. Narração (TTS)            — voz sintetizada em dezenas de idiomas
-     (Edge TTS gratuito, Azure, ElevenLabs, MiniMax, Kokoro,
-     Fish Audio, Chatterbox, VoxCPM, MiMo).
-  5. Legendas (subtitles)      — geradas com edge ou Whisper
-     (faster-whisper), com fonte/posição/cor configuráveis.
-  6. Música de fundo (BGM)     — aleatória ou arquivo próprio,
-     edição com FFmpeg/MoviePy.
-  7. Montagem (render)         — concatena tudo em um MP4 HD.
-
-Outras utilidades:
-  * API REST (FastAPI) completa, com documentação Swagger /docs.
-  * WebUI em Streamlit (interface gráfica no navegador).
-  * Linha de comando (CLI) e modo lote (várias tarefas de uma vez).
-  * Padrão MVC, código limpo, suporta Docker.
-  * Geração de várias versões do mesmo vídeo para escolher a melhor.
-
-========================================================
-3. PRINCIPAIS FUNCIONALIDADES
-========================================================
-[✓] 1 clique: gera script + materiais + narração + legendas + música
-    e entrega um MP4 HD pronto.
-[✓] Formatos: 9:16 (1080x1920), 16:9 (1920x1080) e 1:1 (1080x1080).
-[✓] Modo lote/batch e "video_count" (gera N variações).
-[✓] Dezenas de provedores de LLM, TTS e de material em vídeo.
-[✓] Publicação direta em TikTok, Instagram e YouTube.
-[✓] Legenda: edge (rápido) ou whisper (mais preciso).
-[✓] Exporta/importa configuração e faz backup das API keys.
-[✓] Suporte a proxy, Redis, Docker, GPU (CUDA).
+Fluxo automático (pipeline):
+  1. BAIXAR o episódio (yt-dlp) + TRANSCREVER localmente
+     (faster-whisper, com timestamps palavra a palavra).
+  2. IA PONTUA os momentos mais "clipáveis" (conflito, drama,
+     dinheiro, status, polêmica). O critério de gosto fica em
+     arquivos "skills" editáveis (markdown).
+  3. EDITAR cada clipe: corta no tempo, reenquadra vertical 9:16 com
+     rastreio de rosto, legendas estilo karaokê, zoom de impacto,
+     fake-câmeras, b-roll, correção de cor, barra de retenção,
+     trilha de fundo, narrador (Edge TTS GRÁTIS) e CTA no final.
+  4. QA (garantia de qualidade): um agente "assiste" cada render e
+     reprova clipe com legenda em cima do rosto, frame preto,
+     silêncio, áudio baixo/clipado; conserta o que dá e BLOQUEIA
+     o que não tem conserto (não publica lixo).
+  5. PUBLICAR: gera título/descrição/hashtags por plataforma e
+     agenda no YouTube Shorts (API oficial). TikTok/Instagram
+     deixam o arquivo pronto em ready_to_post/ para postar à mão.
+  6. APRENDER: mede métricas reais (views, retenção), descobre o que
+     está "ganhando" e escreve o aprendizado num arquivo que o
+     sistema lê na próxima rodada (melhora com o tempo).
 
 ========================================================
-4. REQUISITOS / DEPENDÊNCIAS
+3. COMO FUNCIONA (os 10 AGENTES DE IA)
+========================================================
+  #  Agente            O que faz
+  1  Finder (Ag.1)     Baixa o podcast e transcreve (faster-whisper),
+                       pontua os momentos mais promissores (em
+                       pedaços, para não perder nada em episódios
+                       longos).
+  2  Editor (Ag.2)     Corta cada clipe (ffmpeg), vertical 9:16 com
+                       rastreio de rosto, legendas karaokê, música,
+                       zooms de ênfase, "multi-câmera", b-roll, grade
+                       cinematográfica e barra de retenção.
+  3  Uploader (Ag.3)   Escreve títulos/descrições/hashtags por
+                       plataforma e faz upload no YouTube Shorts (via
+                       API oficial); agenda o dia TODO no lado do
+                       servidor do YouTube (PC pode ficar desligado).
+                       TikTok e Reels ficam prontos para postar.
+  4  Manager (Ag.4)    Puxa suas métricas reais (views/retenção),
+                       descobre o que dá certo e grava o aprendizado
+                       num arquivo que o Finder lê na próxima rodada
+                       (loop de melhoria contínua).
+  5  Trend Scout (Ag.5) Usa busca na web GRATUITA para achar o que
+                       está em alta no seu nicho naquele momento.
+  6  Planner (Ag.6)    Dá a direção criativa de cada clipe: texto do
+                       hook, clima da música, palavras a enfatizar,
+                       onde colocar efeitos sonoros/b-roll/transições.
+  7  Community (Ag.7)  Escreve rascunhos de respostas aos comentários
+                       dos seus posts (engajamento não morre).
+  8  Finishing Editor (Ag.8)
+                       O "porteiro da qualidade": avalia cada render
+                       como um editor humano exigente (legenda em
+                       cima do rosto, frames pretos/congelados,
+                       silêncio, áudio ruim, duração errada) e
+                       conserta/bloqueia o que for necessário.
+  9  Trainer (Ag.9)    "Técnico do time": toda semana estuda os
+                       melhores Shorts do nicho e atualiza UM manual
+                       de técnica (playbook) para o sistema evoluir.
+  10 Compiler (Ag.10)  "Showrunner": junta os melhores momentos da
+                       semana num episódio LONGO 16:9 com narração de
+                       IA (tese -> análise -> veredito), projetado
+                       para as regras de monetização de conteúdo
+                       "reutilizado" de 2026.
+
+Além dos agentes existem 24 "skills" (manuais de técnica) em
+factory/skills/*.md (hooks, storytelling, ritmo, sound design,
+legendas, thumbnails, SEO, engajamento, monetização...). São
+carregados direto nos prompts da IA. São markdown simples — edite
+à vontade.
+
+========================================================
+4. PRINCIPAIS FUNCIONALIDADES
+========================================================
+[✓] De um LINK de YouTube -> shorts prontos (vertical 9:16), com
+    legenda karaokê, música, efeitos e qualidade revisada por IA.
+[✓] Configurado de fábrica para PROVEDORES DE IA GRÁTIS (rodar a
+    quase zero custo): OpenRouter free, Groq free, Google Gemini
+    free, NVIDIA free, Ollama local. (Só a Anthropic/Claude é paga —
+    e é a melhor em "bom gosto".)
+[✓] Transcrição local (faster-whisper, na CPU, sem API paga) e
+    narrador com Edge TTS grátis (sem key).
+[✓] Roda COMPLETAMENTE DESATENDIDO: comando `daily` (procura
+    tendência + pega o vídeo novo dos canais-fonte + clipes + edita
+    + posta). Modo `produce` para produzir sem postar.
+[✓] Agendamento no lado do YouTube: agenda o dia todo de uma vez;
+    o PC pode estar desligado que os vídeos saem 3x ao dia (padrão
+    09:00 / 14:00 / 19:00).
+[✓] Upload no YouTube via API oficial (OAuth). TikTok/Instagram:
+    sai pronto em ready_to_post/.
+[✓] Self-improving: Manager mede métricas e grava aprendizado; o
+    sistema melhora sozinho com o tempo.
+[✓] QA automática: Finishing Editor assiste cada render e bloqueia
+    clipe quebrado (e repõe com outro da fila, para nunca faltar
+    post no dia).
+[✓] 24 skills editáveis em markdown controlam o "gosto" da IA.
+[✓] Multiplataforma: Windows (bat/shortcut), macOS e Linux.
+[✓] Modo humano no meio (semi-auto): `auto` pausa para você aprovar
+    os clipes antes de postar.
+
+========================================================
+5. REQUISITOS / DEPENDÊNCIAS
 ========================================================
 Requisitos declarados pelo projeto:
-  * Python 3.11+  (aqui: Python 3.12 — OK)
-  * FFmpeg no PATH (usado para cortar/montar os vídeos)
-  * API keys de pelo menos 1 provedor de LLM (OpenAI, Moonshot,
-    DeepSeek, Gemini, etc.) OU Ollama local — para gerar o roteiro.
-  * Conexão com a internet (para baixar materiais e acessar APIs).
-  * ffmpeg, fontes de legenda e, opcionalmente, GPU p/ Whisper.
+  * Python 3.11+      (aqui: Python 3.12 — OK)
+  * FFmpeg no PATH    (cortar e montar os vídeos)
+  * 1 chave de IA (pelo menos): OpenRouter/Groq/Gemini/NVIDIA são
+    GRÁTIS; Anthropic é paga; Ollama não precisa de chave.
+  * Internet (baixar o podcast, acessar as APIs, baixar o modelo
+    whisper do HuggingFace).
 
-Bibliotecas Python instaladas (requirements.txt completo):
-  fastapi, uvicorn, streamlit, moviepy, edge-tts, faster-whisper,
-  litellm, openai, google-genai, dashscope, azure-cognitiveservices-
-  speech, redis, pydub, loguru, requests, pyyaml, imageio, etc.
+Bibliotecas instaladas (requirements.txt):
+  anthropic, openai, ddgs (busca web grátis do Trend Scout), pyyaml,
+  python-dotenv, rich, yt-dlp, faster-whisper, opencv-python-headless
+  (rastreio de rosto), google-api-python-client, google-auth-oauthlib,
+  edge-tts, scenedetect (cortes por cena).
 
 ========================================================
-5. O QUE EU INSTALEI AQUI (estado real do ambiente)
+6. O QUE EU INSTALEI AQUI (estado real do ambiente)
 ========================================================
 Executado neste ambiente (Linux, runner GitHub Actions/CI):
 
 1) Clonei o repositório:
-   git clone --depth 1 https://github.com/harry0703/MoneyPrinterTurbo.git
-   -> pasta: MoneyPrinterTurbo/
+   git clone --depth 1 https://github.com/jovisia/podcast-shorts-factory.git
+   -> pasta: podcast-shorts-factory/
 
-2) Criei ambiente Python isolado (venv) com Python 3.12:
-   python3 -m venv MoneyPrinterTurbo/.venv
+2) Criei venv isolado com Python 3.12:
+   python3 -m venv podcast-shorts-factory/.venv
 
-3) Instalei todas as dependências:
-   MoneyPrinterTurbo/.venv/bin/pip install -r requirements.txt
-   (SUCESSO — todos os pacotes da lista foram instalados)
+3) Instalei TODAS as dependências com sucesso:
+   .venv/bin/pip install -r requirements.txt
+   (anthropic 1.7.0, openai 3.16.2, yt-dlp, faster-whisper 1.2.1,
+    opencv 4.14, google-api-python-client 2.200, edge-tts 7.2.8,
+    scenedetect 0.6.7, ddgs 9.16, rich, dotenv, pyyaml, ...)
 
-4) Instalei o FFmpeg no sistema (via apt):
-   sudo apt-get install -y ffmpeg  ->  /usr/bin/ffmpeg
+4) Instalei o FFmpeg no sistema:
+   sudo apt-get install -y ffmpeg  ->  ffmpeg version 6.1.1
 
-5) TESTE REAL — o servidor subiu e respondeu:
-   .venv/bin/python main.py
-   -> API Web subiu em http://127.0.0.1:8080/  (código HTTP 200)
-   -> Documentação Swagger em /docs  (código HTTP 200)
-   -> Log: "MoneyPrinterTurbo v1.3.7 - start server,
-     docs: http://127.0.0.1:8080/docs"
+5) TESTE REAL — o CLI funciona neste ambiente:
+   .venv/bin/python run.py        -> lista de comandos (EXIT 0)
+   .venv/bin/python run.py skills -> 25 skills instaladas (EXIT 0)
+   .venv/bin/python run.py scout  -> tenta rodar (só pede .env/config)
+   Todos os módulos dos 10 agentes importam sem erro.
 
-Ou seja: o projeto está INSTALADO e FUNCIONANDO neste ambiente.
+6) Internet VERIFICADA funcionando daqui:
+   youtube.com   -> HTTP 200   (dá para baixar podcasts)
+   huggingface.co -> HTTP 200  (baixa o modelo whisper)
+   openrouter.ai -> HTTP 200   (chave grátis de IA)
+   pexels.com    -> 403 na página, mas a API com chave funciona.
 
-========================================================
-6. CONSIGO USAR AQUI? (resposta direta)
-========================================================
-SIM, parcialmente — com uma ressalva importante.
-
-  O QUE PROVADO QUE FUNCIONA AQUI:
-    - Instalação completa
-    - O servidor da API (FastAPI) sobe e serve a documentação
-
-  O QUE PRECISA PARA FUNCIONAR DE VERDADE (gerar vídeo):
-    1) Uma CHAVE de API (API Key) de um LLM para criar o roteiro.
-       Opções gratuitas quase sem custo: Ollama (local),
-       OpenRouter com modelos free, Groq, Pollinations.
-       Deixe vazios os outros campos no config.toml.
-    2) Uma CHAVE de material em vídeo (Pexels/Pixabay/Coverr)
-       OU usar geração por IA (WaveSpeed/Seedance/etc., é pago).
-    3) Acesso à internet para baixar material e acessar as APIs.
-       (Precisou de proxy? Há seção [proxy] no config.toml.)
-
-  LIMITAÇÕES DESTE AMBIENTE (para gerar vídeo de verdade):
-    - Este é um ambiente de CI/EFÊMERO (sandbox runner). Ele é
-      reiniciado e apagado periodicamente; NÃO guarde nada que
-      não possa ser perdido.
-    - Localmente NÃO há interface gráfica/navegador persistente
-      para abrir o Streamlit WebUI com clique; o que funciona bem
-      aqui é a API REST (por HTTP/curl) e o modo CLI.
-    - Geração de vídeo consome banda, API paga e tempo; num CI
-      gratuito isso pode ficar limitado ou custar crédito.
-
-Em resumo: você PODE USAR aqui via API/CLI, desde que configure
-pelo menos uma API Key de LLM + uma fonte de material. Para o
-WebUI gráfico convencional, é melhor rodar localmente na sua
-máquina (é o uso mais comum e recomendado pelo projeto).
+Ou seja: INSTALADO e com o CLI FUNCIONANDO neste ambiente.
 
 ========================================================
-7. COMO USAR
+7. CONSIGO USAR AQUI? (resposta direta)
 ========================================================
-A) API REST (FastAPI) — o mais recomendado neste ambiente:
-   .venv/bin/python main.py
-   -> Documentação interativa em http://127.0.0.1:8080/docs
-   -> Endpoint principal (POST /api/v1/videos) recebe:
-        video_subject, video_aspect, llm_provider, etc.
-   Exemplo (curl):
-     curl -X POST http://127.0.0.1:8080/api/v1/videos \
-       -H "Content-Type: application/json" \
-       -d '{"video_subject":"Como a IA muda a vida diária",
-            "video_aspect":"9:16","llm_provider":"openai"}'
+SIM, PARCIALMENTE — dá para rodar, com condições.
 
-B) WebUI (Streamlit) — interface visual no navegador:
-   sh webui.sh   (Linux/macOS)  ->  http://127.0.0.1:8501
-   (ou: conda activate MoneyPrinterTurbo && sh webui.sh)
+  O QUE JÁ ESTÁ PROVADO QUE FUNCIONA AQUI:
+    - Instalação completa e CLI de todos os agentes.
+    - Transcrição local (faster-whisper roda na CPU).
+    - Narrador Edge TTS (grátis, sem chave).
+    - Acesso à internet (baixar podcast do YouTube OK).
+    - Com uma CHAVE GRÁTIS de IA (OpenRouter/Groq/Gemini) o pipeline
+      inteiro (encontrar -> planejar -> editar -> QA -> exportar) pode
+      rodar daqui.
 
-C) Linha de comando (CLI):
-   .venv/bin/python cli.py run --video-subject "seu tema aqui"
-   cli.py --help  para ver todas as opções.
+  O QUE VOCÊ PRECISA PARA RODAR DE VERDADE AQUI:
+    1) UMA chave de IA GRÁTIS:
+         OpenRouter   -> https://openrouter.ai/keys  (modelos :free)
+         Groq         -> https://console.groq.com/keys
+         Google Gemini -> https://aistudio.google.com/apikey
+       (ou Ollama local, sem chave, mas precisa de boas GPU/CPU).
+       Coloque a chave no .env (cp .env.example .env) e mude o
+       llm.provider no config.yaml. O wizard `run.py setup` faz isso
+       por você.
+    2) Nas primeiras rodadas deixe uploader.privacy = "private" no
+       config.yaml (não publique direto) e revise o que ele produzir.
+    3) (Opcional) chave Pexels grátis para b-roll:
+       https://www.pexels.com/api/ -> colocar no .env.
+    4) (Para upload real no YouTube) criar client_secret.json no
+       Google Cloud e rodar `run.py auth-youtube` uma vez.
 
-D) Docker:
-   docker compose -f docker-compose.release.yml up
-   (subir via container sem precisar de Python local)
+  O QUE NÃO FUNCIONA BEM NESTE AMBIENTE:
+    - Este é um runner de CI/EFÊMERO: é reiniciado/apagado de tempos
+      em tempos. NÃO guarde nada que não possa perder (chaves, tokens
+      OAuth, vídeos gerados vão embora).
+    - Sem interface gráfica persistente; aqui se usa o CLI
+      (./factory.sh ...).
+    - CI tem tempo/cota limitados por execução; gerar muitos vídeos ou
+      baixar podcasts grandes pode estourar o tempo da execução.
+    - Para uso real e contínuo (agendar todo dia, deixar o PC
+      desligado, abrir o YouTube no navegador para OAuth), o melhor é
+      rodar NA SUA MÁQUINA — o projeto foi feito para ficar rodando
+      sozinho num PC próprio.
 
-========================================================
-8. PASSOS PARA RODAR DE VERDADE (gerar um vídeo)
-========================================================
-1. Vá para a pasta do projeto:
-   cd /home/runner/work/will/will/MoneyPrinterTurbo
-
-2. Copie a configuração de exemplo:
-   cp config.example.toml config.toml
-
-3. Edite config.toml e preencha as chaves:
-   - llm_provider = "openai"  (ou moonshot/deepseek/gemini/groq)
-   - openai_api_key = "sk-..."  (sua chave)
-   - pexels_api_keys = ["sua-chave-pexels"]   (material em vídeo)
-   - video_source = "pexels"
-   (Deixe o resto vazio. Também pode via variáveis de ambiente.)
-
-4. Suba a API:
-   .venv/bin/python main.py
-
-5. Dispare a tarefa pela API /docs (POST /api/v1/videos) ou pelo CLI.
-
-6. Dentro de alguns minutos o vídeo é montado em storage/tasks/
-   (e você pode publicar no TikTok/Instagram/YouTube).
+CONCLUSÃO: dá para USAR AQUI via CLI para produzir clipes (agora, com
+uma chave grátis de IA). Para operar o canal de forma contínua e
+automática (daily / produce / agenda de postagens), o certo é
+instalar na sua máquina. Em ambos os casos o recurso é o mesmo.
 
 ========================================================
-9. INFORMAÇÕES TÉCNICAS ADICIONAIS
+8. COMO USAR
 ========================================================
-- Estrutura: aplicação MVC. Código principal em app/
-  (controllers/, services/, models/, utils/), Web UI em webui/,
-  config em config.toml (gerado a partir de config.example.toml).
-- Comandos úteis:
-    .venv/bin/python main.py        -> inicia API (FastAPI) na :8080
-    .venv/bin/python cli.py --help  -> opções do CLI
-    sh webui.sh                     -> inicia interface Streamlit
-- Portas padrão: API 8080, WebUI 8501 (auto-ajustável 8502+).
-- Geração de legendas: edge (http://edge-tts) ou whisper (offline,
-  ex.: faster-whisper). subtitle_provider no config.toml.
-- Materiais: pexels, pixabay, coverr (chiave grátis) ou geração IA.
-- Provendo LLM: OpenAI, Moonshot/Kimi, DeepSeek, Gemini, Qwen,
-  Azure OpenAI, Grok, Ollama (local/gratuito), OpenRouter,
-  OneAPI, LiteLLM, ModelScope, etc.
-- TTS: Edge TTS (grátis), Azure, ElevenLabs, MiniMax, Kokoro,
-  Fish, Chatterbox, VoxCPM, MiMo.
-- BGM: random (grátis) ou arquivo em resource/songs.
-- Fontes/legendas: resource/fonts (pode adicionar as suas).
-- Documentos oficiais que já existem no projeto:
-    README.md (chinês), README-en.md (inglês), README-ja.md.
-    config.example.toml tem TODAS as opções comentadas.
+Sempre pela pasta do projeto:
+  cd /home/runner/work/will/will/podcast-shorts-factory
+
+A) ATALHO (cria/usa o venv sozinho):
+   ./factory.sh setup                          -> wizard de 1a vez
+   ./factory.sh auto "https://www.youtube.com/watch?v=ID"  -> pipeline todo
+   ./factory.sh daily                          -> tudo automático, todo dia
+  # ou direto:  .venv/bin/python run.py <comando>
+
+B) COMANDOS (run.py):
+   setup           Wizard: provedor de IA + chave + nicho + plataformas + CTA
+   find <url>      Baixa, transcreve e pontua os clipes (Agente 1)
+   review          Você aprova/rejeita os candidatos
+   edit            Renderiza os aprovados em shorts verticais (Agente 2)
+   finish          QA final antes de postar (Agente 8)
+   upload          Postar/exportar por plataforma (Agente 3)
+   compile         Episódio longo semanal 16:9 (--no-upload só renderiza)
+   stats           Atualiza métricas e aprendizado (Agente 4)
+   scout           Atualiza tendências atuais (trends.md)
+   trainer         Roda o "treinador" semanal (Agente 9)
+   skills          Lista as skills instaladas e qual agente usa
+   auth-youtube    Conecta seu canal no YouTube (OAuth) e guarda o token
+   auto <url>      Pipeline inteiro semi-auto (pausa para você aprovar);
+                   com --yes aprova os top N e posta sem acompanhamento
+   daily           Sem acompanhamento: scout + vídeo novo + clipes + edita + posta
+   produce         Produz os clipes do dia e monta a fila (sem postar)
+   post-next       Posta o único melhor clipe da fila (postagem escalonada)
+   comments        Responde comentários (Agente 7)
+   digest          Relatório semanal do Manager
+
+C) ONDE CAEM OS ARQUIVOS:
+   output/           shorts prontos (clip_*.mp4) e capas (clip_*_cover.jpg)
+   ready_to_post/    arquivos prontos para postar à mão (TikTok/IG)
+   activity.md       tudo o que os agentes fizeram (novo no topo)
+   learnings.md      aprendizados do Manager
+   trends.md         tendências do Trend Scout
+   factory.db        banco SQLite local (status de cada clipe)
 
 ========================================================
-10. DÚVIDAS COMUNS (FAQ CURTO)
+9. PASSOS PARA RODAR DE VERDADE
 ========================================================
-P: Preciso de placa de vídeo (GPU)? -> Não para o básico (CPU ok);
-   GPU ajuda apenas no Whisper/geração por IA.
-P: É grátis? -> O programa é gratuito (MIT). Mas usa APIs de IA;
-   o básico pode ser feito com contas gratuitas (Edge TTS, Pexels,
-   Groq/OpenRouter free, Ollama local).
-P: Posso publicar direto? -> Sim (TikTok/Instagram/YouTube) com
-   configuração de upload-post.
-P: Dá para monetizar? -> O projeto foi feito para isso ("impressora
-   de dinheiro"), mas a receita depende do seu conteúdo, não da
-   ferramenta. Respeite as regras das plataformas.
+1. cd /home/runner/work/will/will/podcast-shorts-factory
+2. cp .env.example .env
+3. Preencha UMA chave de IA no .env (ex.: OPENROUTER_API_KEY=...)
+   e ajuste llm.provider no config.yaml (ex.: openrouter) e o modelo.
+   (ou rode `./factory.sh setup` que pergunta e configura sozinho)
+4. (Opcional) PEXELS_API_KEY=... no .env para b-roll.
+5. Deixe privacy: "private" nas primeiras vezes.
+6. Teste com um podcast pequeno:
+   ./factory.sh auto "https://www.youtube.com/watch?v=ID"
+   (sem --yes ele pausa para você aprovar/rejeitar cada clipe)
+7. Confira output/ e pronto para publicar.
+8. Para operar sozinho todo dia: ponha seus canais em
+   scheduler.sources no config.yaml e use `./factory.sh daily`.
 
 ========================================================
-FIM — MoneyPrinterTurbo v1.3.7, instalado e testado com sucesso.
+10. INFORMAÇÕES TÉCNICAS ADICIONAIS
+========================================================
+- Estrutura: código em factory/ (agents/, skills/, utils/, config.py,
+  db.py, llm.py, notify.py, setup_wizard.py), orquestrador em run.py,
+  config em config.yaml, segredos em .env.
+- Padrão: ótimo para rodar em baixo custo — transcrição local
+  (faster-whisper), narrador Edge TTS (sem key), b-roll opcional via
+  Pexels, search web grátis via ddgs.
+- Render: ffmpeg + MoviePy-style overlays; reframe "smart" mantém
+  2 pessoas na tela, "face" sempre dá zoom no rosto.
+- Legendas em ASS (karaokê ativo palavra a palavra), fonte/você pode
+  mudar via config.yaml (editor.captions) — ATENÇÃO: font_file do
+  config vem com caminho de Windows (C:/Windows/Fonts/arialbd.ttf);
+  no Linux troque para uma fonte instalada, ex. /usr/share/fonts/...
+- Música de fundo: coloque mp3 royaly-free em assets/music/
+  (pasta vazia = sem música). SFX em assets/sfx/.
+- B-roll: assets/broll_cache; geração de foto/vídeo de apoio via
+  Pollinations/design_scenes.py (CC0).
+- Remotion (remotion/): cartões de intro animados (premium, precisa
+  de Node 18+ e npm install; desligado por padrão).
+- Modelos whisper: tiny/base/small/medium/large-v3 (config finder.
+  whisper_model); small é um bom equilíbrio.
+- Se o YouTube bloquear o download ("confirm you're not a bot"),
+  defina finder.cookies_from_browser: chrome (feche o Chrome antes).
+- Notificações no celular: instale o app ntfy e ponha um tópico seu
+  em notify.ntfy_topic no config.yaml.
+- OAuth do YouTube: docs/youtube-setup.md explica como criar o
+  client_secret.json no Google Cloud Console.
+
+========================================================
+11. LIMITAÇÕES DESTE AMBIENTE
+========================================================
+- CI/efêmero: tudo que for criado aqui (chaves, tokens, vídeos) some
+  quando o runner for reciclado. Use para testes, não para produção.
+- Sem navegador/interface gráfica persistente e sem agendador de
+  24h rodando em segundo plano — os comandos rodam na hora de rodar.
+- Cota de tempo/CPU/banda por execução: podcasts muito longos ou
+  muitos clipes podem estourar o tempo do runner.
+- A 1a execução baixa o modelo whisper do HuggingFace (pode demorar
+  alguns minutos).
+- OAuth do YouTube exige abrir URL no navegador — difícil num CI
+  sem navegador; ok se você rodar na sua máquina.
+
+========================================================
+12. DÚVIDAS COMUNS (FAQ CURTO)
+========================================================
+P: É mesmo grátis? -> O programa é (MIT). E roda com provedores deIA
+   gratuitos (OpenRouter/Groq/Gemini free), transcrição local e TTS
+   grátis. Pexels e Edge TTS também gratuitos.
+P: Preciso de GPU? -> Não para a base; faster-whisper/opencv rodam na
+   CPU. GPU só deixa a transcrição mais rápida.
+P: Pode postar no meu canal automaticamente? -> Sim (YouTube via API,
+   com OAuth), e agenda 3x/dia no lado do YouTube. TikTok/IG saem
+   prontos para postar à mão (sem API automática por padrão).
+P: Dá para monetizar? -> O autor liberou para isso (MIT). Mas respeite
+   os direitos dos podcasts: use conteúdo próprio, com licença, em
+   fair-use/paródia/transformação, ou com permissão do criador.
+P: O que "skills" significa? -> Manuais de técnica em markdown que a
+   IA lê para tomar decisões com bom gosto. Edite os .md e a "vibe"
+   do sistema muda.
+P: E se um clipe ficar ruim? -> O Finishing Editor (QA) detecta e
+   bloqueia; em modo preventivo você aprova tudo antes de publicar.
+
+========================================================
+FIM — Podcast Shorts Factory, instalado e testado com sucesso.
 Documento gerado em 2026-09-20 por assistente de automação.
 ========================================================
