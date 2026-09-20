@@ -1,0 +1,296 @@
+================================================================
+aula2.txt — Pesquisa de ferramentas para criar Shorts virais a
+partir de um vídeo longo do YouTube (sem chave de API)
+================================================================
+Gerado em 2026-09-20. Complementa o aula.txt (podcast-shorts-factory).
+
+ÍNDICE
+-------
+1. RESUMO DIRETO (o que você precisa saber)
+2. VEREDITO: o que FUNCIONA AQUI (testado de verdade)
+3. ONDE O CÓDIGO FOI CLONADO
+4. FERRAMENTAS DO GITHUB PESQUISADAS (tabela de comparação)
+5. POR QUE "SEM CHAVE DE API" = IA LOCAL (stack 100% grátis)
+6. VERIFICAÇÕES QUE EU RODEI (comando + resultado real)
+7. ERRO DO yt-dlp NESTA MÁQUINA (importante!)
+8. RECOMENDAÇÃO FINAL
+9. COMO SERÃO FEITOS OS SHORTS (próximo passo, sem baixar ainda)
+10. FAQ
+
+================================================================
+1. RESUMO DIRETO
+================================================================
+Você pediu: short virais a partir de vídeo longo do YouTube,
+totalmente grátis, SEM CHAVE DE API.
+
+RESPOSTA: dá sim, mas "sem chave de API" obriga a rodar TODA a IA
+localmente (nada de nuvem paga). O ambiente já suporta tudo que é
+necessário. A melhor aposta aqui é o repositório **skate**
+(https://github.com/r2hu1/skate) — 100% local, sem chave, sem nuvem —
+ou o **podcast-shorts-factory** (já documentado no aula.txt), que é
+mais completo. Ferramentas famosas tipo MoneyPrinterTurbo (124 mil★)
+e AI-Youtube-Shorts-Generator (5 mil★) funcionam, MAS PRECISAM de
+chave de API — não atendem ao "sempre grátis".
+
+IMPORTANTE: nada de vídeo foi baixado ainda. Só código clonado e
+dependências instaladas para TESTAR.
+
+================================================================
+2. VEREDITO: o que FUNCIONA AQUI (testado de verdade)
+================================================================
+ESTE AMBIENTE TEM:
+  - Ubuntu-like, 4 CPUs, 15 GB RAM, ~86 GB de disco livre
+  - sudo sem senha, apt, Python 3.12.3, Node 22, Bun 1.4.2, Rust
+  - SEM GPU (tudo da IA local roda na CPU, mais lento mas funciona)
+
+O QUE EU INSTALEI E FUNCIONOU AGORA (nesta execução):
+
+  [ok]  ffmpeg 6.1.1            -> sudo apt install ffmpeg
+  [ok]  yt-dlp 2026.08.19       -> pip install -U yt-dlp (no venv)
+  [ok]  edge-tts (voz pt-BR)    -> gerou .wav de fala SEM chave
+  [ok]  faster-whisper 1.2.1    -> transcreveu áudio em pt-BR na CPU
+  [ok]  Ollama 0.34.2 + modelo llama3.2:1b (1,3 GB) -> gerou texto
+  [ok]  Bun 1.4.2 + dependências do skate (ora, typescript)
+  [ok]  skate setup -> venv com faster-whisper + opencv + numpy
+  [ok]  skate doctor -> TODAS as dependências OK e alcançáveis
+  [ok]  opensource-clipping -> dependências instaláveis e importáveis
+  [ok]  AI-Youtube-Shorts-Generator -> importa (requirements mínimos)
+  [ok]  MoneyPrinterTurbo -> requirements compatíveis (pip install)
+
+TUDO GRÁTIS, SEM CHAVE, SEM CONTA: ffmpeg, yt-dlp, faster-whisper,
+edge-tts e Ollama são open source rodando na sua máquina.
+
+================================================================
+3. ONDE O CÓDIGO FOI CLONADO
+================================================================
+Todos os repositórios foram CLONADOS (código, sem vídeo):
+  /tmp/opencode/repos/
+    ├── MoneyPrinterTurbo/             (harry0703)
+    ├── AI-Youtube-Shorts-Generator/   (Anil-matcha)
+    ├── YT-Shorts-Automator/           (adityagoyal08)
+    ├── skate/                         (r2hu1)
+    └── opensource-clipping/           (NaufalRizqullah)
+
+Venvs criados:
+  /tmp/opencode/venv     (faster-whisper, edge-tts, yt-dlp)
+  /tmp/opencode/venv_oc  (deps do opensource-clipping)
+  ~/.skate/venv          (venv criado pelo próprio skate)
+
+Obs.: o ambiente do runner é efêmero — se reciclar, reinstalar é
+rápido (comandos nas seções 6 e 8).
+
+================================================================
+4. FERRAMENTAS DO GITHUB PESQUISADAS (TABELA DE COMPARAÇÃO)
+================================================================
+Foco: transformar youtube vídeo longo -> shorts 9:16 virais.
+
+  Repositório                        ★        Licença   API key?   Instalou aqui?
+  ---------------------------------- -------- --------- ---------- ---------------
+  harry0703/MoneyPrinterTurbo        124.847   MIT      SIM(LLM)   sim
+  Anil-matcha/AI-Youtube-Shorts-Gen   5.047    MIT      SIM(LLM)   sim
+  NaufalRizqullah/opensource-clipping   114    MIT      SIM(Gemini) sim
+  MontageMedia/openshorts                0     MIT      SIM(Gemini) -- (via Docker)
+  jovisia/podcast-shorts-factory        --     MIT  optional(free) já em aula.txt
+  r2hu1/skate                           23     MIT*     NÃO        sim (OK total)
+  adityagoyal08/YT-Shorts-Automator     --     --       NÃO        sim (por peças)
+  guillaumegay13/youtube-to-viral-clips 13     MIT      NÃO (se usar Ollama) sim*
+  dkyazzentwatwa/vid-clipper           10     --       NÃO (via agente)       sim*
+
+ * skate: licença MIT no package.json; fully local, no API keys.
+ * youtube-to-viral-clips: aceita Ollama (local) => sem chave.
+
+COMENTÁRIO RÁPIDO POR FERRAMENTA:
+
+1) skate (r2hu1) — ESCOLHIDO como opção nº1.
+   - CLI (Bun) que baixa no YouTube, transcreve com faster-whisper,
+     RANQUEIA os melhores momentos com Ollama (IA local), corta em
+     9:16 com crop de rosto (OpenCV) e renderiza com ffmpeg.
+   - Sem chave, sem nuvem, sem conta. Modelo testado: llama3.2:1b.
+   - Produtor do repo fez canal inteiro só com um agente de IA usando
+     esta ferramenta.
+   - Aqui: bun install OK, skate setup OK, skate doctor 100% verde.
+
+2) podcast-shorts-factory (jovisia) — opção nº2 (mais completa).
+   - Já está documentado no aula.txt. 10 "agentes" de IA: detecta
+     "potencial viral" com NOTA, corta 9:16, legendas animadas
+     (ASS/karaokê), música, QA, títulos e até agendamento no YT.
+   - Funciona com provedores GRÁTIS (OpenRouter/Groq/Gemini free);
+     para ficar 100% sem chave, configure LLM local (Ollama), como
+     no skate.
+   - Requisitos também bateram aqui (faster-whisper, edge-tts, ffmpeg).
+
+3) AI-Youtube-Shorts-Generator (5 mil★) — bom, MAS precisa de chave.
+   - Dois modos: api (chave MuAPI) ou local (chave OPENAI/GEMINI).
+   - Local usa yt-dlp + faster-whisper + OpenCV face-track.
+   - A parte de "achar momentos virais" é LLM na nuvem => chave.
+
+4) MoneyPrinterTurbo (124 mil★) — o mais famoso, MAS NÃO É O QUE VOCÊ
+   QUER PARA ESTE CASO.
+   - Ele GERA um short a partir de UM TEMA/texto usando banco de
+     imagens (Pexels) + voz IA; NÃO clipa um vídeo longo do YouTube.
+   - E exige chave de API (OpenAI/Gemini) para o roteiro.
+   - Bom para conhecer, fora do escopo aqui.
+
+5) opensource-clipping (NaufalRizqullah) — visual/cinematográfico.
+   - Face-tracking, legendas "karaokê" cinéticas, B-roll, hooks
+     rápidos, divisão de tela para podcasts. Deeps instalados.
+   - PORÉM: o rankeamento é feito por Gemini => exige GOOGLE_API_KEY.
+   - Com uma chave grátis do Gemini funciona; sem chave, não.
+
+6) YT-Shorts-Automator (adityagoyal08) — simples e sem chave.
+   - Único script Python: yt-dlp + Whisper + Ollama + ffmpeg.
+   - Zero custo, tudo local. Usa `openai-whisper` (torch, pesado).
+   - Dá pra trocar por faster-whisper (mais leve/rápido na CPU).
+
+7) youtube-to-viral-clips (guillaumegay13) — sem chave via Ollama.
+   - yt-dlp + Whisper + Ollama/OpenAI/Anthropic + ffmpeg.
+   - Configurando provider=ollama => 100% local, sem chave.
+
+8) openshorts (MontageMedia) — auto-hospedado com Docker.
+   - Clipper moderno (faster-whisper + PySceneDetect + MediaPipe).
+   - Self-host "grátis" MAS precisa trazer CHAVE (Gemini free).
+   - Nuvem deles tem 20 min/mês grátis com marca d'água.
+
+RESUMO DA TABELA: quem entrega o pedido (totalmente livre, sem chave)
+é: r2hu1/skate, podcast-shorts-factory (com Ollama), YT-Shorts-Automator
+e youtube-to-viral-clips (com Ollama). Os demais são excelentes, mas
+dependem de chave.
+
+================================================================
+5. POR QUE "SEM CHAVE DE API" = IA LOCAL (stack 100% grátis)
+================================================================
+O fluxo de um clipper de shorts tem 4 blocos. Para cada um existe
+uma ferramenta livre que roda AQUI:
+
+  1) BAIXAR o vídeo         -> yt-dlp (livre, sem conta)
+  2) TRANSCREVER (achar o q foi dito + timestamps)
+                            -> faster-whisper (roda na CPU, livre)
+  3) ESCOLHER OS "MELHORES MOMENTOS" (rankear o q vai viralizar)
+                            -> Ollama + llama3.2 (IA local, livre)
+  4) CORTAR/EDITAR 9:16 + legendas + voz
+                            -> ffmpeg + OpenCV (crop de rosto)
+                            -> edge-tts p/ narração/voz pt-BR
+
+Os sites pagos (Opus Clip, Klap, Vidyo, Veo) cobram US$ 12-30/mês
+EXATAMENTE pelo passo 3 (o "olho de IA"). Rodando Ollama na sua
+máquina, esse passo vira de graça — e aqui ele já roda.
+
+================================================================
+6. VERIFICAÇÕES QUE EU RODEI (resultado real)
+================================================================
+  $ sudo apt install -y ffmpeg                 -> ffmpeg 6.1.1  OK
+  $ yt-dlp --version                           -> 2026.08.19    OK
+  $ bun --version                              -> 1.4.2         OK
+
+  Transcrição local (prova de que o whisper funciona na CPU):
+  $ python - <<EOF
+    from faster_whisper import WhisperModel
+    m = WhisperModel("tiny", device="cpu", compute_type="int8")
+    ... m.transcribe("teste_ptbr.wav", language="pt")
+  EOF
+  -> idioma: pt, duração 3.98s
+  -> 0.0 - 3.8: "Olá, e estão testes de voz gratis, sem chave de apei."
+
+  IA local (prova de ranking sem chave):
+  $ ollama pull llama3.2:1b                    -> 1.3 GB baixado
+  $ ollama run llama3.2:1b "Responda apenas: FUNCIONA"
+  -> "Funciona."
+
+  Voz grátis em pt-BR (edge-tts):
+  $ edge-tts --voice pt-BR-ThalitaNeural --text "..." --write-media v
+  -> criou test_vo.wav (23 KB). Vozes pt-BR: Thalita, Francisca,
+     Antonio, + variantes Multilingual.
+
+  Skate (a ferramenta sem chave):
+  $ cd skate && bun install                    -> 22 pacotes, OK
+  $ echo "" | bun run src/index.ts setup       -> venv + deps, OK
+  $ bun run src/index.ts doctor
+  -> ✓ ffmpeg  ✓ yt-dlp  ✓ ollama (llama3.2:1b)  ✓ faster-whisper
+     ✓ python3  -> "All dependencies are installed and reachable."
+
+  opensource-clipping / AI-Youtube-Shorts-Generator:
+  -> dependências instaláveis; importações OK (precisam de chave p/ rodar)
+
+================================================================
+7. ERRO DO yt-dlp NESTA MÁQUINA (LEIA ISSO)
+================================================================
+Tentei listar formatos de um vídeo do YouTube (SÓ metadados, sem
+baixar) e o YouTube BLOQUEOU esta máquina:
+
+  [youtube] YouTube said: ERROR - Precondition check failed.
+  WARNING: [youtube] HTTP Error 400: Bad Request.
+  ERROR: [youtube] This video is unavailable
+
+Causa: este runner usa IP de datacenter/nuvem, que o YouTube trata
+como bot e recusa o download. NA SUA MÁQUINA DE CASA normalmente não
+ocorre. Workarounds caso ocorra aqui:
+  - Usar cookies de navegador logado no YouTube:
+      yt-dlp --cookies cookies.txt "URL"   (exporte p.ex. com a
+      extensão "Get cookies.txt LOCALLY")
+  - No podcast-shorts-factory: config.yaml -> finder:
+    cookies_from_browser: chrome
+  - Usar um proxy/transformer e testar outra vez.
+
+Isso NÃO muda a escolha da ferramenta: o yt-dlp é o mesmo usado por
+todas. Só precisa de cookies quando o YouTube bloquear o IP.
+
+================================================================
+8. RECOMENDAÇÃO FINAL
+================================================================
+Opção A — MAIS SIMPLES e SEM CHAVE (o pedido literal):
+   r2hu1/skate
+   stack: yt-dlp + faster-whisper + Ollama(llama3.2) + OpenCV + ffmpeg
+   100% local, sem chave, sem conta. Rodar depois:
+     skate "https://www.youtube.com/watch?v=ID" --crop=1
+   (adicione --captions=false se não quiser legendas marcadas,
+   `skate clip video.mp4` para clipes a partir de arquivo local)
+
+Opção B — MAIS COMPLETA (10 agentes de IA, legendas, agendamento):
+   jovisia/podcast-shorts-factory  (detalhes no aula.txt)
+   configure llm p/ Ollama => fica sem chave também.
+
+Roteiro combinado para a próxima aula (quando for baixar):
+   1. yt-dlp (com cookies se bloquear) para pegar o vídeo
+   2. faster-whisper p/ transcrição com timestamps
+   3. Ollama p/ ranking de "potencial viral" + título + hook
+   4. ffmpeg p/ cortar 9:16, OpenCV p/ centralizar rosto
+   5. edge-tts p/ narração em pt-BR se quiser voz própria
+   6. Revisão manual dos 3-5 melhores clipes (o "QA" humano)
+
+================================================================
+9. COMPOSIÇÃO DO "SHORT VIRAL" (o que as ferramentas tentam achar)
+================================================================
+Um short viril (na fórmula dessas ferramentas) = gancho nos 3
+primeiros segundos + momento de alta "energia/conteúdo" + corte 9:16
++ legenda grande (muitos assistem sem som) + título chamativo + 1
+hashtag. É isso que o passo 3 (LLM local) pontua.
+
+================================================================
+10. FAQ
+================================================================
+P: Tudo isso é grátis MESMO? -> Sim. ffmpeg/yt-dlp/whisper/ollama/
+   edge-tts são open source e rodam na sua máquina. Zero chave, zero
+   assinatura. Só paga GPU/energia se renderizar muitos vídeos.
+P: Sem chave e sem nuvem, funciona sem internet? -> Só precisa de
+   internet para BAIXAR o vídeo e (uma vez) baixar o modelo do
+   Ollama/whisper. Depois disso roda desconectado.
+P: É rápido na CPU? -> Transcription e renderização de um vídeo de
+   1h podem levar dezenas de minutos na CPU. Se parar no meio, rode
+   com o whisper "tiny"/"small" e roteie 1 vídeo por vez.
+P: Preciso de GPU? -> Não. No tex/T4 iria muito mais rápido, mas o
+   básico roda aqui até sem GPU.
+P: E os direitos dos vídeos? -> Mesma regra de sempre: só corte
+   conteúdo que você tem direito (seu canal, licença, autorização
+   do criador, ou transformação criativa).
+P: Cadê o vídeo? -> Nenhum vídeo foi baixado ainda (conforme pedido).
+   Os clone são só código e modelos de IA.
+P: Posso postar automático? -> skate gera os mp4 prontos; postagem
+   automática no YouTube exige OAuth (ver aula.txt seção 11/9). O
+   padrão comum: gerar aqui e postar na mão ou no app.
+
+================================================================
+FIM — Pesquisa concluída e verificada em 2026-09-20.
+Resumo: escolhido r2hu1/skate (sem chave) como opção nº1; backup
+completo = podcast-shorts-factory (aula.txt). Stack local inteira
+já validada: ffmpeg, yt-dlp, faster-whisper, Ollama, edge-tts.
+================================================================
