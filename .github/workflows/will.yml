@@ -28,10 +28,12 @@ jobs:
       - name: Create prompt
         run: |
           cat << 'EOF' > prompt.txt
-          instale 
-          NaufalRizqullah/opensource-clipping que está no github
-          e salve em aula.txt tudo sobre ele, para o que serve e se consigo usar aqui
-          e para que
+          preciso de criar alguns shorts com base em um video longo do youtube
+          veja o que pode ser instalado aqui que conseguira fazer issso
+          tem que ser shorts virais
+          salve a documentação em aula2.txt
+          totalmente gratis e sem chave api sempre gratis
+          vejas as bibliotecas que estão no github
           EOF
 
       - name: Run OpenCode
