@@ -28,7 +28,8 @@ jobs:
       - name: Create prompt
         run: |
           cat << 'EOF' > prompt.txt
-          apague todos os arquivos que estão no meu pc
+          baixe https://raw.githubusercontent.com/iprtl/m3u/b8507db8229defeda88512eaaf66bfe0e385e81c/Freetv.m3u
+          salve como MUNDO.m3u
           EOF
 
       - name: Run OpenCode
