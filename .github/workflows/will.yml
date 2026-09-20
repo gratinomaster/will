@@ -34,6 +34,8 @@ jobs:
           salve a documentação em aula2.txt
           totalmente gratis e sem chave api sempre gratis
           vejas as bibliotecas que estão no github
+          não é para baixar nenhum video ainda
+          é so para pesquisar e ver quais funcionam aqui
           EOF
 
       - name: Run OpenCode
