@@ -1,6 +1,4 @@
 instale 
-free-voice-clone
-e use ele
-baixe a voz do william bonner do tiktok
-limpe o audio de referencia
-crie um modelo para que eu possa usar sempre
+moneyprinterturbo que está no github
+e salve em aula.txt tudo sobre ele, para o que serve e se consigo usar aqui
+e para que

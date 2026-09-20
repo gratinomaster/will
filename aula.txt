@@ -1,0 +1,254 @@
+========================================================
+aula.txt — MoneyPrinterTurbo 💸
+Pacote instalado e documentado em 2026-09-20
+========================================================
+
+ÍNDICE
+-------
+1. O QUE É
+2. PARA QUE SERVE (com o que ele trabalha)
+3. PRINCIPAIS FUNCIONALIDADES
+4. REQUISITOS / DEPENDÊNCIAS
+5. O QUE EU INSTALEI AQUI (estado real do ambiente)
+6. CONSIGO USAR AQUI? (resposta direta: sim, parcialmente)
+7. COMO USAR (API / WebUI / CLI / Docker)
+8. PASSOS PARA RODAR DE VERDADE
+9. INFORMAÇÕES TÉCNICAS ADICIONAIS
+10. LIMITAÇÕES DESTE AMBIENTE
+
+========================================================
+1. O QUE É
+========================================================
+MoneyPrinterTurbo é um sistema open source (MIT) de GERAÇÃO
+AUTOMÁTICA DE VÍDEOS CURTOS usando IA. Está no GitHub:
+
+  Repositório: https://github.com/harry0703/MoneyPrinterTurbo
+  Autor: harry0703 (Harrison)
+  Versão instalada aqui: v1.3.7
+  Estrelas: ~90 mil (repositório muito popular)
+  Licença: MIT (livre para usar, inclusive comercialmente)
+
+Em uma frase: você dá um TEMA ou uma PALAVRA-CHAVE e o sistema
+gera um vídeo curto pronto (tipo TikTok/Shorts/Reels) com roteiro,
+material de vídeo, narração por voz, legendas e música de fundo.
+
+========================================================
+2. PARA QUE SERVE
+========================================================
+Destina-se à criação de "short videos" (vídeos curtos) com foco em:
+
+  * Automatização de conteúdo para TikTok, Instagram Reels e
+    YouTube Shorts (gera e ainda PUBLICA nesses canais).
+  * Criação de conteúdo em escala ("canais de facão"/"máquina de
+    dinheiro" = daí o nome "MoneyPrinter" / "impressora de dinheiro").
+  * Testes A/B de criativos de vídeo gerados em lote.
+
+Fluxo automático (pipeline) que ele monta sozinho:
+  1. Roteiro (script)          — gerado por um LLM (ChatGPT/GPT-4o,
+     Moonshot/Kimi, DeepSeek, Gemini, Qwen, Claude, Grok, Ollama,
+     OpenRouter, etc.) com base no tema informado.
+  2. Termos de busca           — o LLM extrai palavras-chave.
+  3. Material em vídeo (stock) — baixado de Pexels, Pixabay, Coverr
+     (ou gerado com IA: WaveSpeed, Seedance/Volcengine, OFox,
+     MuAPI, MiniMax H3, ElevenLabs etc.), já no formato e resolução
+     escolhidos (9:16, 16:9, 1:1).
+  4. Narração (TTS)            — voz sintetizada em dezenas de idiomas
+     (Edge TTS gratuito, Azure, ElevenLabs, MiniMax, Kokoro,
+     Fish Audio, Chatterbox, VoxCPM, MiMo).
+  5. Legendas (subtitles)      — geradas com edge ou Whisper
+     (faster-whisper), com fonte/posição/cor configuráveis.
+  6. Música de fundo (BGM)     — aleatória ou arquivo próprio,
+     edição com FFmpeg/MoviePy.
+  7. Montagem (render)         — concatena tudo em um MP4 HD.
+
+Outras utilidades:
+  * API REST (FastAPI) completa, com documentação Swagger /docs.
+  * WebUI em Streamlit (interface gráfica no navegador).
+  * Linha de comando (CLI) e modo lote (várias tarefas de uma vez).
+  * Padrão MVC, código limpo, suporta Docker.
+  * Geração de várias versões do mesmo vídeo para escolher a melhor.
+
+========================================================
+3. PRINCIPAIS FUNCIONALIDADES
+========================================================
+[✓] 1 clique: gera script + materiais + narração + legendas + música
+    e entrega um MP4 HD pronto.
+[✓] Formatos: 9:16 (1080x1920), 16:9 (1920x1080) e 1:1 (1080x1080).
+[✓] Modo lote/batch e "video_count" (gera N variações).
+[✓] Dezenas de provedores de LLM, TTS e de material em vídeo.
+[✓] Publicação direta em TikTok, Instagram e YouTube.
+[✓] Legenda: edge (rápido) ou whisper (mais preciso).
+[✓] Exporta/importa configuração e faz backup das API keys.
+[✓] Suporte a proxy, Redis, Docker, GPU (CUDA).
+
+========================================================
+4. REQUISITOS / DEPENDÊNCIAS
+========================================================
+Requisitos declarados pelo projeto:
+  * Python 3.11+  (aqui: Python 3.12 — OK)
+  * FFmpeg no PATH (usado para cortar/montar os vídeos)
+  * API keys de pelo menos 1 provedor de LLM (OpenAI, Moonshot,
+    DeepSeek, Gemini, etc.) OU Ollama local — para gerar o roteiro.
+  * Conexão com a internet (para baixar materiais e acessar APIs).
+  * ffmpeg, fontes de legenda e, opcionalmente, GPU p/ Whisper.
+
+Bibliotecas Python instaladas (requirements.txt completo):
+  fastapi, uvicorn, streamlit, moviepy, edge-tts, faster-whisper,
+  litellm, openai, google-genai, dashscope, azure-cognitiveservices-
+  speech, redis, pydub, loguru, requests, pyyaml, imageio, etc.
+
+========================================================
+5. O QUE EU INSTALEI AQUI (estado real do ambiente)
+========================================================
+Executado neste ambiente (Linux, runner GitHub Actions/CI):
+
+1) Clonei o repositório:
+   git clone --depth 1 https://github.com/harry0703/MoneyPrinterTurbo.git
+   -> pasta: MoneyPrinterTurbo/
+
+2) Criei ambiente Python isolado (venv) com Python 3.12:
+   python3 -m venv MoneyPrinterTurbo/.venv
+
+3) Instalei todas as dependências:
+   MoneyPrinterTurbo/.venv/bin/pip install -r requirements.txt
+   (SUCESSO — todos os pacotes da lista foram instalados)
+
+4) Instalei o FFmpeg no sistema (via apt):
+   sudo apt-get install -y ffmpeg  ->  /usr/bin/ffmpeg
+
+5) TESTE REAL — o servidor subiu e respondeu:
+   .venv/bin/python main.py
+   -> API Web subiu em http://127.0.0.1:8080/  (código HTTP 200)
+   -> Documentação Swagger em /docs  (código HTTP 200)
+   -> Log: "MoneyPrinterTurbo v1.3.7 - start server,
+     docs: http://127.0.0.1:8080/docs"
+
+Ou seja: o projeto está INSTALADO e FUNCIONANDO neste ambiente.
+
+========================================================
+6. CONSIGO USAR AQUI? (resposta direta)
+========================================================
+SIM, parcialmente — com uma ressalva importante.
+
+  O QUE PROVADO QUE FUNCIONA AQUI:
+    - Instalação completa
+    - O servidor da API (FastAPI) sobe e serve a documentação
+
+  O QUE PRECISA PARA FUNCIONAR DE VERDADE (gerar vídeo):
+    1) Uma CHAVE de API (API Key) de um LLM para criar o roteiro.
+       Opções gratuitas quase sem custo: Ollama (local),
+       OpenRouter com modelos free, Groq, Pollinations.
+       Deixe vazios os outros campos no config.toml.
+    2) Uma CHAVE de material em vídeo (Pexels/Pixabay/Coverr)
+       OU usar geração por IA (WaveSpeed/Seedance/etc., é pago).
+    3) Acesso à internet para baixar material e acessar as APIs.
+       (Precisou de proxy? Há seção [proxy] no config.toml.)
+
+  LIMITAÇÕES DESTE AMBIENTE (para gerar vídeo de verdade):
+    - Este é um ambiente de CI/EFÊMERO (sandbox runner). Ele é
+      reiniciado e apagado periodicamente; NÃO guarde nada que
+      não possa ser perdido.
+    - Localmente NÃO há interface gráfica/navegador persistente
+      para abrir o Streamlit WebUI com clique; o que funciona bem
+      aqui é a API REST (por HTTP/curl) e o modo CLI.
+    - Geração de vídeo consome banda, API paga e tempo; num CI
+      gratuito isso pode ficar limitado ou custar crédito.
+
+Em resumo: você PODE USAR aqui via API/CLI, desde que configure
+pelo menos uma API Key de LLM + uma fonte de material. Para o
+WebUI gráfico convencional, é melhor rodar localmente na sua
+máquina (é o uso mais comum e recomendado pelo projeto).
+
+========================================================
+7. COMO USAR
+========================================================
+A) API REST (FastAPI) — o mais recomendado neste ambiente:
+   .venv/bin/python main.py
+   -> Documentação interativa em http://127.0.0.1:8080/docs
+   -> Endpoint principal (POST /api/v1/videos) recebe:
+        video_subject, video_aspect, llm_provider, etc.
+   Exemplo (curl):
+     curl -X POST http://127.0.0.1:8080/api/v1/videos \
+       -H "Content-Type: application/json" \
+       -d '{"video_subject":"Como a IA muda a vida diária",
+            "video_aspect":"9:16","llm_provider":"openai"}'
+
+B) WebUI (Streamlit) — interface visual no navegador:
+   sh webui.sh   (Linux/macOS)  ->  http://127.0.0.1:8501
+   (ou: conda activate MoneyPrinterTurbo && sh webui.sh)
+
+C) Linha de comando (CLI):
+   .venv/bin/python cli.py run --video-subject "seu tema aqui"
+   cli.py --help  para ver todas as opções.
+
+D) Docker:
+   docker compose -f docker-compose.release.yml up
+   (subir via container sem precisar de Python local)
+
+========================================================
+8. PASSOS PARA RODAR DE VERDADE (gerar um vídeo)
+========================================================
+1. Vá para a pasta do projeto:
+   cd /home/runner/work/will/will/MoneyPrinterTurbo
+
+2. Copie a configuração de exemplo:
+   cp config.example.toml config.toml
+
+3. Edite config.toml e preencha as chaves:
+   - llm_provider = "openai"  (ou moonshot/deepseek/gemini/groq)
+   - openai_api_key = "sk-..."  (sua chave)
+   - pexels_api_keys = ["sua-chave-pexels"]   (material em vídeo)
+   - video_source = "pexels"
+   (Deixe o resto vazio. Também pode via variáveis de ambiente.)
+
+4. Suba a API:
+   .venv/bin/python main.py
+
+5. Dispare a tarefa pela API /docs (POST /api/v1/videos) ou pelo CLI.
+
+6. Dentro de alguns minutos o vídeo é montado em storage/tasks/
+   (e você pode publicar no TikTok/Instagram/YouTube).
+
+========================================================
+9. INFORMAÇÕES TÉCNICAS ADICIONAIS
+========================================================
+- Estrutura: aplicação MVC. Código principal em app/
+  (controllers/, services/, models/, utils/), Web UI em webui/,
+  config em config.toml (gerado a partir de config.example.toml).
+- Comandos úteis:
+    .venv/bin/python main.py        -> inicia API (FastAPI) na :8080
+    .venv/bin/python cli.py --help  -> opções do CLI
+    sh webui.sh                     -> inicia interface Streamlit
+- Portas padrão: API 8080, WebUI 8501 (auto-ajustável 8502+).
+- Geração de legendas: edge (http://edge-tts) ou whisper (offline,
+  ex.: faster-whisper). subtitle_provider no config.toml.
+- Materiais: pexels, pixabay, coverr (chiave grátis) ou geração IA.
+- Provendo LLM: OpenAI, Moonshot/Kimi, DeepSeek, Gemini, Qwen,
+  Azure OpenAI, Grok, Ollama (local/gratuito), OpenRouter,
+  OneAPI, LiteLLM, ModelScope, etc.
+- TTS: Edge TTS (grátis), Azure, ElevenLabs, MiniMax, Kokoro,
+  Fish, Chatterbox, VoxCPM, MiMo.
+- BGM: random (grátis) ou arquivo em resource/songs.
+- Fontes/legendas: resource/fonts (pode adicionar as suas).
+- Documentos oficiais que já existem no projeto:
+    README.md (chinês), README-en.md (inglês), README-ja.md.
+    config.example.toml tem TODAS as opções comentadas.
+
+========================================================
+10. DÚVIDAS COMUNS (FAQ CURTO)
+========================================================
+P: Preciso de placa de vídeo (GPU)? -> Não para o básico (CPU ok);
+   GPU ajuda apenas no Whisper/geração por IA.
+P: É grátis? -> O programa é gratuito (MIT). Mas usa APIs de IA;
+   o básico pode ser feito com contas gratuitas (Edge TTS, Pexels,
+   Groq/OpenRouter free, Ollama local).
+P: Posso publicar direto? -> Sim (TikTok/Instagram/YouTube) com
+   configuração de upload-post.
+P: Dá para monetizar? -> O projeto foi feito para isso ("impressora
+   de dinheiro"), mas a receita depende do seu conteúdo, não da
+   ferramenta. Respeite as regras das plataformas.
+
+========================================================
+FIM — MoneyPrinterTurbo v1.3.7, instalado e testado com sucesso.
+Documento gerado em 2026-09-20 por assistente de automação.
+========================================================
