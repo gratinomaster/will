@@ -29,7 +29,7 @@ jobs:
         run: |
           cat << 'EOF' > prompt.txt
           instale 
-          moneyprinterturbo que está no github
+          jovisia/podcast-shorts-factory que está no github
           e salve em aula.txt tudo sobre ele, para o que serve e se consigo usar aqui
           e para que
           EOF
