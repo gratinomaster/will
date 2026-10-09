@@ -1,7 +1,7 @@
 #EXTM3U url-tvg="https://epgshare01.online/epgshare01/epg_ripper_ES1.xml.gz,https://epgshare01.online/epgshare01/epg_ripper_PT1.xml.gz,https://epgshare01.online/epgshare01/epg_ripper_BR1.xml.gz,https://epgshare01.online/epgshare01/epg_ripper_BR2.xml.gz,https://epgshare01.online/epgshare01/epg_ripper_US2.xml.gz,https://epgshare01.online/epgshare01/epg_ripper_US_LOCALS1.xml.gz,https://epgshare01.online/epgshare01/epg_ripper_AU1.xml.gz,https://epgshare01.online/epgshare01/epg_ripper_UK1.xml.gz,https://epgshare01.online/epgshare01/epg_ripper_DE1.xml.gz,https://epgshare01.online/epgshare01/epg_ripper_FR1.xml.gz,https://epgshare01.online/epgshare01/epg_ripper_RO1.xml.gz,https://epgshare01.online/epgshare01/epg_ripper_TR1.xml.gz,https://epgshare01.online/epgshare01/epg_ripper_CA2.xml.gz,https://www.tdtchannels.com/epg/TV.xml.gz,https://iptv-epg.org/files/epg-es.xml.gz,https://iptv-epg.org/files/epg-pt.xml.gz" refresh="3600"
 # =# =# =# =# =# =# =# =# =# =# =# =# =# =# =# =# =# =# =# =# =# =# =# =# =# =#
 #  MUNDO - canais em directo
-#  Total de canais: 151
+#  Total de canais: 153
 #  Actualizado: October 2026 (GMT) - 2026-10-09
 #  Apenas ligacoes publicas recolhidas na Internet.
 #  Todos os canais testados com FFmpeg em 2026-10-09.
@@ -22,6 +22,12 @@ https://streaming-1.eltorotv.com/lb0/eltorotv-streaming-web/index.m3u8
 
 #EXTINF:-1 tvg-id="24Horas.TV,Canal.24.horas.es" tvg-logo="https://raw.githubusercontent.com/tv-logo/tv-logos/main/countries/spain/24h-es.png" group-title="Espanha 🇪🇸",24h 🇪🇸
 https://stream.ads.ottera.tv/playlist.m3u8?network_id=15621
+
+#EXTINF:-1 tvg-id="RNE.TV" tvg-logo="https://img.rtve.es/css/style2011/i/PG_logo_RNE.png" group-title="Espanha 🇪🇸",RNE 🇪🇸
+https://ztnr.rtve.es/ztnr/6688753.m3u8
+
+#EXTINF:-1 tvg-id="ElPais.TV,El.País.es" tvg-logo="https://media.tvup.cloud/canales/color_lg_628ce1b45233d00022138a04.png" group-title="Espanha 🇪🇸",El País 🇪🇸
+https://jmp2.uk/stvp-ESBC39000033J
 
 #EXTINF:-1 tvg-id="Negocios.TV,Negocios.TV.es" tvg-logo="https://raw.githubusercontent.com/tv-logo/tv-logos/main/countries/spain/negocios-es.png" group-title="Espanha 🇪🇸",Negocios TV 🇪🇸
 https://streaming013.gestec-video.com/hls/negociostv.m3u8
@@ -65,9 +71,6 @@ https://multimedia.eitb.eus/live-content/etb1hd-hls/master.m3u8
 #EXTINF:-1 tvg-id="ETB2.TV,ETB2.es,ETB.2.es" tvg-logo="https://raw.githubusercontent.com/tv-logo/tv-logos/main/countries/spain/etb2-es.png" group-title="Espanha 🇪🇸",ETB 2 🇪🇸
 https://multimedia.eitb.eus/live-content/etb2hd-hls/master.m3u8
 
-#EXTINF:-1 tvg-id="ElPais.TV,El.País.es" tvg-logo="https://media.tvup.cloud/canales/color_lg_628ce1b45233d00022138a04.png" group-title="Espanha 🇪🇸",El País 🇪🇸
-https://jmp2.uk/stvp-ESBC39000033J
-
 #EXTINF:-1 tvg-id="SolMusica.TV,Sol.Música.es,SOL.Música.es" tvg-logo="https://raw.githubusercontent.com/tv-logo/tv-logos/main/countries/spain/sol-musica-es.png" group-title="Espanha 🇪🇸",Sol Música 🇪🇸
 https://d2glyu450vvghm.cloudfront.net/v1/master/3722c60a815c199d9c0ef36c5b73da68a62b09d1/cc-21u4g5cjglv02/sm.m3u8
 
@@ -76,10 +79,6 @@ https://rtvelivestream-rtveplayplus.rtve.es/rtvesec/int/tvei_ame_main_1080.m3u8
 
 #EXTINF:-1 tvg-id="TVE_STAR.TV" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/c/c0/Star_TVE_HD_2026.png" group-title="Espanha 🇪🇸",Star TVE 🇪🇸
 https://rtvelivestream.rtve.es/rtvesec/int/star_main_dvr.m3u8
-
-#EXTINF:-1 tvg-id="RNE.TV" tvg-logo="https://img.rtve.es/css/style2011/i/PG_logo_RNE.png" group-title="Espanha 🇪🇸",RNE 🇪🇸
-https://ztnr.rtve.es/ztnr/6688753.m3u8
-
 
 #  --- Portugal 🇵🇹 ---
 #EXTINF:-1 tvg-id="RTP.1.HD.pt" http-user-agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:93.0) Gecko/20100101 Firefox/93.0" tvg-logo="https://raw.githubusercontent.com/tv-logo/tv-logos/main/countries/portugal/rtp-1-pt.png" group-title="Portugal 🇵🇹",RTP1 🇵🇹
@@ -93,6 +92,12 @@ https://streaming-live.rtp.pt/liverepeater/smil:rtpafrica.smil/playlist.m3u8
 
 #EXTINF:-1 tvg-id="RTP.2.HD.pt" http-user-agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:93.0) Gecko/20100101 Firefox/93.0" tvg-logo="https://raw.githubusercontent.com/tv-logo/tv-logos/main/countries/portugal/rtp-2-pt.png" group-title="Portugal 🇵🇹",RTP2 🇵🇹
 https://streaming-live.rtp.pt/liverepeater/smil:rtp2HD.smil/playlist.m3u8
+
+#EXTINF:-1 tvg-id="RTP3.pt,RTP.Notícias.HD.pt" http-user-agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:93.0) Gecko/20100101 Firefox/93.0" tvg-logo="https://raw.githubusercontent.com/tv-logo/tv-logos/main/countries/portugal/rtp-noticias-pt.png" group-title="Portugal 🇵🇹",RTP3 🇵🇹
+https://streaming-live.rtp.pt/livetvhlsDVR/rtpnHDdvr.smil/playlist.m3u8
+
+#EXTINF:-1 tvg-id="RTP.Açores.pt,RTPAcores.pt" http-user-agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:93.0) Gecko/20100101 Firefox/93.0" tvg-logo="https://raw.githubusercontent.com/tv-logo/tv-logos/main/countries/portugal/rtp-acores-pt.png" group-title="Portugal 🇵🇹",RTP Açores 🇵🇹
+https://streaming-live.rtp.pt/liverepeater/smil:rtpacores.smil/playlist.m3u8
 
 #EXTINF:-1 tvg-id="TVI.HD.pt" tvg-logo="https://raw.githubusercontent.com/tv-logo/tv-logos/main/countries/portugal/tvi-pt.png" group-title="Portugal 🇵🇹",TVI 🇵🇹
 https://raw.githubusercontent.com/thomraider12/canaistvpt/main/m3u8s/tvi.m3u8
@@ -179,7 +184,7 @@ https://d2e1asnsl7br7b.cloudfront.net/7782e205e72f43aeb4a48ec97f66ebbe/index_5.m
 #EXTINF:-1 tvg-id="ABCNewsSydney.au" tvg-logo="https://raw.githubusercontent.com/tv-logo/tv-logos/main/countries/australia/abc-news-au.png" group-title="World News 🌍",ABC News Australia 🇦🇺
 https://abc-news-dmd-streams-1.akamaized.net/out/v1/701126012d044971b3fa89406a440133/index.m3u8
 
-#EXTINF:-1 tvg-id="Globo.br" tvg-logo="https://raw.githubusercontent.com/tv-logo/tv-logos/main/countries/brazil/globo-br.png" group-title="World News 🌍",Globo Esporte ⚽️ 🇧🇷
+#EXTINF:-1 tvg-logo="https://raw.githubusercontent.com/tv-logo/tv-logos/main/countries/brazil/globo-br.png" group-title="World News 🌍",Globo Esporte ⚽️ 🇧🇷
 https://dfr80qz435crc.cloudfront.net/EFGH/Amagi/Globo/GE_Fast_BR/GE_Fast.m3u8
 
 #EXTINF:-1 tvg-id="Africa.24.fr" tvg-logo="https://logo.m3uassets.com/africa24.png" group-title="World News 🌍",Africa 24 🇫🇷
@@ -257,7 +262,7 @@ https://dbrb49pjoymg4.cloudfront.net/v1/master/3fec3e5cac39a52b2132f9c66c83dae04
 #EXTINF:-1 tvg-id="TRT.World.uk" tvg-logo="https://raw.githubusercontent.com/tv-logo/tv-logos/main/countries/turkey/trt-world-tr.png" group-title="World News 🌍",TRT World 🇬🇧
 https://tv-trtworld.medya.trt.com.tr/master.m3u8
 
-#EXTINF:-1 tvg-logo="https://logo.m3uassets.com/tv5mondeinfo.png" group-title="World News 🌍",Tv5 Monde Info 🇫🇷
+#EXTINF:-1 tvg-id="TV5Monde.TV,TV5.Monde.pt" tvg-logo="https://logo.m3uassets.com/tv5mondeinfo.png" group-title="World News 🌍",Tv5 Monde Info 🇫🇷
 https://d161b1o6wfc5a3.cloudfront.net/v1/master/3722c60a815c199d9c0ef36c5b73da68a62b09d1/cc-3u7sgewc3l8ri/tvfm.m3u8
 
 #EXTINF:-1 tvg-logo="https://raw.githubusercontent.com/tv-logo/tv-logos/main/misc/vod/yahoo-finance-vod.png" group-title="World News 🌍",Yahoo! Finance 🇺🇸
@@ -334,10 +339,10 @@ https://d12gab6t5iutxf.cloudfront.net/v1/master/3722c60a815c199d9c0ef36c5b73da68
 #EXTINF:-1 tvg-logo="https://30a-tv.com/wp-content/uploads/2024/06/30atv-1024-637-1.png" group-title="Desportos 🌎",30A We Love Cars 🇺🇸🏎️
 https://30a-tv.com/feeds/720p/55.m3u8
 
-#EXTINF:-1 tvg-logo="https://raw.githubusercontent.com/tv-logo/tv-logos/main/countries/united-states/bein-sports-xtra-espanol-us.png" group-title="Desportos 🌎",Bein Sport Xtra ñ 🇺🇸🇲🇽
+#EXTINF:-1 tvg-id="beIN.Sports.En.Español.HD.us2" tvg-logo="https://raw.githubusercontent.com/tv-logo/tv-logos/main/countries/united-states/bein-sports-xtra-espanol-us.png" group-title="Desportos 🌎",Bein Sport Xtra ñ 🇺🇸🇲🇽
 https://dbrb49pjoymg4.cloudfront.net/10001/99991785/hls/playlist.m3u8?ads.xumo_channelId=99991785
 
-#EXTINF:-1 tvg-logo="https://raw.githubusercontent.com/tv-logo/tv-logos/main/countries/argentina/el-garage-tv-ar.png" group-title="Desportos 🌎",Garage TV 🇦🇷🏎️
+#EXTINF:-1 tvg-id="ElGarageTV.es,El.Garage.TV.es" tvg-logo="https://raw.githubusercontent.com/tv-logo/tv-logos/main/countries/argentina/el-garage-tv-ar.png" group-title="Desportos 🌎",Garage TV 🇦🇷🏎️
 https://stream1.sersat.com/hls/garagetv.m3u8
 
 #EXTINF:-1 tvg-logo="https://logo.m3uassets.com/motogp.png" group-title="Desportos 🌎",MotoGP Channel 🏍
