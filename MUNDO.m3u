@@ -1,4 +1,4 @@
-#EXTM3U url-tvg="https://epgshare01.online/epgshare01/epg_ripper_ES1.xml.gz,https://epgshare01.online/epgshare01/epg_ripper_PT1.xml.gz,https://epgshare01.online/epgshare01/epg_ripper_BR1.xml.gz,https://epgshare01.online/epgshare01/epg_ripper_BR2.xml.gz,https://epgshare01.online/epgshare01/epg_ripper_US2.xml.gz,https://epgshare01.online/epgshare01/epg_ripper_US_LOCALS1.xml.gz,https://epgshare01.online/epgshare01/epg_ripper_AU1.xml.gz,https://epgshare01.online/epgshare01/epg_ripper_UK1.xml.gz,https://epgshare01.online/epgshare01/epg_ripper_DE1.xml.gz,https://epgshare01.online/epgshare01/epg_ripper_FR1.xml.gz,https://epgshare01.online/epgshare01/epg_ripper_RO1.xml.gz,https://epgshare01.online/epgshare01/epg_ripper_TR1.xml.gz,https://epgshare01.online/epgshare01/epg_ripper_CA2.xml.gz,https://www.tdtchannels.com/epg/TV.xml.gz,https://iptv-epg.org/files/epg-es.xml.gz,https://iptv-epg.org/files/epg-pt.xml.gz" refresh="3600"
+#EXTM3U url-tvg="https://epgshare01.online/epgshare01/epg_ripper_ES1.xml.gz,https://epgshare01.online/epgshare01/epg_ripper_PT1.xml.gz,https://epgshare01.online/epgshare01/epg_ripper_BR1.xml.gz,https://epgshare01.online/epgshare01/epg_ripper_BR2.xml.gz,https://iptv-epg.org/files/epg-br.xml.gz,https://epgshare01.online/epgshare01/epg_ripper_US2.xml.gz,https://epgshare01.online/epgshare01/epg_ripper_US_LOCALS1.xml.gz,https://epgshare01.online/epgshare01/epg_ripper_AU1.xml.gz,https://epgshare01.online/epgshare01/epg_ripper_UK1.xml.gz,https://epgshare01.online/epgshare01/epg_ripper_DE1.xml.gz,https://epgshare01.online/epgshare01/epg_ripper_FR1.xml.gz,https://epgshare01.online/epgshare01/epg_ripper_RO1.xml.gz,https://epgshare01.online/epgshare01/epg_ripper_TR1.xml.gz,https://epgshare01.online/epgshare01/epg_ripper_CA2.xml.gz,https://www.tdtchannels.com/epg/TV.xml.gz,https://iptv-epg.org/files/epg-es.xml.gz,https://iptv-epg.org/files/epg-pt.xml.gz" refresh="3600"
 # =# =# =# =# =# =# =# =# =# =# =# =# =# =# =# =# =# =# =# =# =# =# =# =# =# =#
 #  MUNDO - canais em directo
 #  Total de canais: 154
@@ -15,62 +15,32 @@ https://stream.ads.ottera.tv/playlist.m3u8?network_id=15619
 #EXTINF:-1 tvg-id="La2.TV,La.2.es" tvg-logo="https://raw.githubusercontent.com/tv-logo/tv-logos/main/countries/spain/tve-2-es.png" group-title="Espanha 🇪🇸",La 2 🇪🇸
 https://stream.ads.ottera.tv/playlist.m3u8?network_id=15618
 
-#EXTINF:-1 tvg-id="ElToroTV.TV,El.Toro.TV.es" tvg-logo="https://raw.githubusercontent.com/tv-logo/tv-logos/main/countries/spain/el-toro-tv-es.png" group-title="Espanha 🇪🇸",El Toro TV 🇪🇸
-https://streaming-1.eltorotv.com/lb0/eltorotv-streaming-web/index.m3u8
+#EXTINF:-1 tvg-id="24Horas.TV,Canal.24.horas.es" tvg-logo="https://raw.githubusercontent.com/tv-logo/tv-logos/main/countries/spain/24h-es.png" group-title="Espanha 🇪🇸",24h 🇪🇸
+https://stream.ads.ottera.tv/playlist.m3u8?network_id=15621
+
+#EXTINF:-1 tvg-id="TDP.TV,Teledeporte.es" tvg-logo="https://raw.githubusercontent.com/tv-logo/tv-logos/main/countries/spain/tdp-es.png" group-title="Espanha 🇪🇸",Teledeporte 🇪🇸
+https://stream.ads.ottera.tv/playlist.m3u8?network_id=15601
+
+#EXTINF:-1 tvg-id="Clan.TV,Clan.TVE.es" tvg-logo="https://raw.githubusercontent.com/tv-logo/tv-logos/main/countries/spain/clan-es.png" group-title="Espanha 🇪🇸",Clan (RTVE) 🇪🇸
+https://stream.ads.ottera.tv/playlist.m3u8?network_id=15620
 
 #EXTINF:-1 tvg-id="13.TV,TRECE.es" tvg-logo="https://raw.githubusercontent.com/tv-logo/tv-logos/main/countries/spain/trece-es.png" group-title="Espanha 🇪🇸",TRECE 🇪🇸
 https://play.cdn.enetres.net/091DB7AFBD77442B9BA2F141DCC182F5021/021/playlist.m3u8
 
+#EXTINF:-1 tvg-id="ElToroTV.TV,El.Toro.TV.es" tvg-logo="https://raw.githubusercontent.com/tv-logo/tv-logos/main/countries/spain/el-toro-tv-es.png" group-title="Espanha 🇪🇸",El Toro TV 🇪🇸
+https://streaming-1.eltorotv.com/lb0/eltorotv-streaming-web/index.m3u8
+
+#EXTINF:-1 tvg-id="RMTV.TV,Real.Madrid.TV.es" tvg-logo="https://raw.githubusercontent.com/tv-logo/tv-logos/main/countries/spain/real-madrid-tv-es.png" group-title="Espanha 🇪🇸",Real Madrid TV 🇪🇸
+https://rmtv.akamaized.net/hls/live/2043153/rmtv-es-web/master.m3u8
+
 #EXTINF:-1 tvg-id="RNE.TV" tvg-logo="https://img.rtve.es/css/style2011/i/PG_logo_RNE.png" group-title="Espanha 🇪🇸",RNE 🇪🇸
 https://ztnr.rtve.es/ztnr/6688753.m3u8
-
-#EXTINF:-1 tvg-id="24Horas.TV,Canal.24.horas.es" tvg-logo="https://raw.githubusercontent.com/tv-logo/tv-logos/main/countries/spain/24h-es.png" group-title="Espanha 🇪🇸",24h 🇪🇸
-https://stream.ads.ottera.tv/playlist.m3u8?network_id=15621
 
 #EXTINF:-1 tvg-id="ElPais.TV,El.País.es" tvg-logo="https://media.tvup.cloud/canales/color_lg_628ce1b45233d00022138a04.png" group-title="Espanha 🇪🇸",El País 🇪🇸
 https://jmp2.uk/stvp-ESBC39000033J
 
 #EXTINF:-1 tvg-id="Negocios.TV,Negocios.TV.es" tvg-logo="https://raw.githubusercontent.com/tv-logo/tv-logos/main/countries/spain/negocios-es.png" group-title="Espanha 🇪🇸",Negocios TV 🇪🇸
 https://streaming013.gestec-video.com/hls/negociostv.m3u8
-
-#EXTINF:-1 tvg-id="TDP.TV,Teledeporte.es" tvg-logo="https://raw.githubusercontent.com/tv-logo/tv-logos/main/countries/spain/tdp-es.png" group-title="Espanha 🇪🇸",Teledeporte 🇪🇸
-https://stream.ads.ottera.tv/playlist.m3u8?network_id=15601
-
-#EXTINF:-1 tvg-id="RMTV.TV,Real.Madrid.TV.es" tvg-logo="https://raw.githubusercontent.com/tv-logo/tv-logos/main/countries/spain/real-madrid-tv-es.png" group-title="Espanha 🇪🇸",Real Madrid TV 🇪🇸
-https://rmtv.akamaized.net/hls/live/2043153/rmtv-es-web/master.m3u8
-
-#EXTINF:-1 tvg-id="Clan.TV,Clan.TVE.es" tvg-logo="https://raw.githubusercontent.com/tv-logo/tv-logos/main/countries/spain/clan-es.png" group-title="Espanha 🇪🇸",Clan (RTVE) 🇪🇸
-https://stream.ads.ottera.tv/playlist.m3u8?network_id=15620
-
-#EXTINF:-1 tvg-id="TV3.TV,TVC.TV" tvg-logo="https://raw.githubusercontent.com/tv-logo/tv-logos/main/countries/spain/tv3-cat-es.png" group-title="Espanha 🇪🇸",TV3 🇪🇸
-https://directes3-tv-int.3catdirectes.cat/live-content/tvi-hls/master.m3u8
-
-#EXTINF:-1 tvg-id="324.TV,3CatInfo.es" tvg-logo="https://raw.githubusercontent.com/tv-logo/tv-logos/main/countries/spain/3-24-es.png" group-title="Espanha 🇪🇸",3Cat Info 🇪🇸
-https://directes-tv-int.3catdirectes.cat/live-content/canal324-hls/master.m3u8
-
-#EXTINF:-1 tvg-id="Telemadrid.TV,TeleMadridInt.TV" tvg-logo="https://raw.githubusercontent.com/tv-logo/tv-logos/main/countries/spain/tele-madrid-es.png" group-title="Espanha 🇪🇸",Telemadrid 🇪🇸
-https://live.telemadrid.cross-media.es/6389770581112/eu-central-1/6416060453001/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJob3N0IjoiajI5YjgyLmVncmVzcy5haGc3NmwiLCJhY2NvdW50X2lkIjoiNjQxNjA2MDQ1MzAwMSIsImVobiI6ImxpdmUudGVsZW1hZHJpZC5jcm9zcy1tZWRpYS5lcyIsImlzcyI6ImJsaXZlLXBsYXliYWNrLXNvdXJjZS1hcGkiLCJzdWIiOiJwYXRobWFwdG9rZW4iLCJhdWQiOlsiNjQxNjA2MDQ1MzAwMSJdLCJqdGkiOiI2Mzg5NzcwNTgxMTEyIn0.kqriAMUkHT6m0V6wkCHJum_EUyL4PAi1zJMKlfmYHEU/playlist-hls.m3u8
-
-#EXTINF:-1 tvg-id="TVG2.TV,tvG2.es" tvg-logo="https://raw.githubusercontent.com/tv-logo/tv-logos/main/countries/spain/galicia-2-es.png" group-title="Espanha 🇪🇸",TVG 2 🇪🇸
-https://crtvg-tvg2.flumotion.cloud/playlist.m3u8
-
-#EXTINF:-1 tvg-id="TVG.Europa.es" tvg-logo="https://raw.githubusercontent.com/tv-logo/tv-logos/main/countries/spain/galicia-es.png" group-title="Espanha 🇪🇸",Galicia Europa 🇪🇸
-https://crtvg-europa.flumotion.cloud/playlist.m3u8
-
-#EXTINF:-1 tvg-id="ETB1.TV,ETB1.es,ETB.1.es" tvg-logo="https://raw.githubusercontent.com/tv-logo/tv-logos/main/countries/spain/etb1-es.png" group-title="Espanha 🇪🇸",ETB 1 🇪🇸
-https://multimedia.eitb.eus/live-content/etb1hd-hls/master.m3u8
-
-#EXTINF:-1 tvg-id="ETB2.TV,ETB2.es,ETB.2.es" tvg-logo="https://raw.githubusercontent.com/tv-logo/tv-logos/main/countries/spain/etb2-es.png" group-title="Espanha 🇪🇸",ETB 2 🇪🇸
-https://multimedia.eitb.eus/live-content/etb2hd-hls/master.m3u8
-
-#EXTINF:-1 tvg-id="CanalSurA.TV,Canal.Sur.Andalucía.es" tvg-logo="https://raw.githubusercontent.com/tv-logo/tv-logos/main/countries/spain/canal-sur-1-es.png" group-title="Espanha 🇪🇸",Canal Sur Andalucía 🇪🇸
-https://dfk2a268yviz9.cloudfront.net/v1/master/3722c60a815c199d9c0ef36c5b73da68a62b09d1/cc-ddiii1m6jt6of/CanalSurAndaluciaES.m3u8
-
-#EXTINF:-1 tvg-id="Canal.Sur.2.es" tvg-logo="https://raw.githubusercontent.com/tv-logo/tv-logos/main/countries/spain/canal-sur-2-es.png" group-title="Espanha 🇪🇸",Canal Sur 2 🇪🇸
-https://cdnlive.codev8.net/rtvalive/smil:channel22.smil/playlist.m3u8
-
-#EXTINF:-1 tvg-logo="https://graph.facebook.com/CanalSurNoticias/picture?width=200&height=200" group-title="Espanha 🇪🇸",Canal Sur Más Noticias 🇪🇸
-https://cdnlive.codev8.net/rtvalive/smil:channel42.smil/playlist.m3u8
 
 #EXTINF:-1 tvg-id="SolMusica.TV,Sol.Música.es,SOL.Música.es" tvg-logo="https://raw.githubusercontent.com/tv-logo/tv-logos/main/countries/spain/sol-musica-es.png" group-title="Espanha 🇪🇸",Sol Música 🇪🇸
 https://d2glyu450vvghm.cloudfront.net/v1/master/3722c60a815c199d9c0ef36c5b73da68a62b09d1/cc-21u4g5cjglv02/sm.m3u8
@@ -81,6 +51,36 @@ https://rtvelivestream-rtveplayplus.rtve.es/rtvesec/int/tvei_ame_main_1080.m3u8
 #EXTINF:-1 tvg-id="TVE_STAR.TV" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/c/c0/Star_TVE_HD_2026.png" group-title="Espanha 🇪🇸",Star TVE 🇪🇸
 https://rtvelivestream.rtve.es/rtvesec/int/star_main_dvr.m3u8
 
+#EXTINF:-1 tvg-id="TV3.TV,TVC.TV" tvg-logo="https://raw.githubusercontent.com/tv-logo/tv-logos/main/countries/spain/tv3-cat-es.png" group-title="Espanha 🇪🇸",TV3 🇪🇸
+https://directes3-tv-int.3catdirectes.cat/live-content/tvi-hls/master.m3u8
+
+#EXTINF:-1 tvg-id="324.TV,3CatInfo.es" tvg-logo="https://raw.githubusercontent.com/tv-logo/tv-logos/main/countries/spain/3-24-es.png" group-title="Espanha 🇪🇸",3Cat Info 🇪🇸
+https://directes-tv-int.3catdirectes.cat/live-content/canal324-hls/master.m3u8
+
+#EXTINF:-1 tvg-id="ETB1.TV,ETB1.es,ETB.1.es" tvg-logo="https://raw.githubusercontent.com/tv-logo/tv-logos/main/countries/spain/etb1-es.png" group-title="Espanha 🇪🇸",ETB 1 🇪🇸
+https://multimedia.eitb.eus/live-content/etb1hd-hls/master.m3u8
+
+#EXTINF:-1 tvg-id="ETB2.TV,ETB2.es,ETB.2.es" tvg-logo="https://raw.githubusercontent.com/tv-logo/tv-logos/main/countries/spain/etb2-es.png" group-title="Espanha 🇪🇸",ETB 2 🇪🇸
+https://multimedia.eitb.eus/live-content/etb2hd-hls/master.m3u8
+
+#EXTINF:-1 tvg-id="TVG2.TV,tvG2.es" tvg-logo="https://raw.githubusercontent.com/tv-logo/tv-logos/main/countries/spain/galicia-2-es.png" group-title="Espanha 🇪🇸",TVG 2 🇪🇸
+https://crtvg-tvg2.flumotion.cloud/playlist.m3u8
+
+#EXTINF:-1 tvg-id="TVG.Europa.es" tvg-logo="https://raw.githubusercontent.com/tv-logo/tv-logos/main/countries/spain/galicia-es.png" group-title="Espanha 🇪🇸",Galicia Europa 🇪🇸
+https://crtvg-europa.flumotion.cloud/playlist.m3u8
+
+#EXTINF:-1 tvg-id="CanalSurA.TV,Canal.Sur.Andalucía.es" tvg-logo="https://raw.githubusercontent.com/tv-logo/tv-logos/main/countries/spain/canal-sur-1-es.png" group-title="Espanha 🇪🇸",Canal Sur Andalucía 🇪🇸
+https://dfk2a268yviz9.cloudfront.net/v1/master/3722c60a815c199d9c0ef36c5b73da68a62b09d1/cc-ddiii1m6jt6of/CanalSurAndaluciaES.m3u8
+
+#EXTINF:-1 tvg-id="Canal.Sur.2.es" tvg-logo="https://raw.githubusercontent.com/tv-logo/tv-logos/main/countries/spain/canal-sur-2-es.png" group-title="Espanha 🇪🇸",Canal Sur 2 🇪🇸
+https://cdnlive.codev8.net/rtvalive/smil:channel22.smil/playlist.m3u8
+
+#EXTINF:-1 tvg-logo="https://graph.facebook.com/CanalSurNoticias/picture?width=200&height=200" group-title="Espanha 🇪🇸",Canal Sur Más Noticias 🇪🇸
+https://cdnlive.codev8.net/rtvalive/smil:channel42.smil/playlist.m3u8
+
+#EXTINF:-1 tvg-id="Telemadrid.TV,TeleMadridInt.TV" tvg-logo="https://raw.githubusercontent.com/tv-logo/tv-logos/main/countries/spain/tele-madrid-es.png" group-title="Espanha 🇪🇸",Telemadrid 🇪🇸
+https://live.telemadrid.cross-media.es/6389770581112/eu-central-1/6416060453001/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJob3N0IjoiajI5YjgyLmVncmVzcy5haGc3NmwiLCJhY2NvdW50X2lkIjoiNjQxNjA2MDQ1MzAwMSIsImVobiI6ImxpdmUudGVsZW1hZHJpZC5jcm9zcy1tZWRpYS5lcyIsImlzcyI6ImJsaXZlLXBsYXliYWNrLXNvdXJjZS1hcGkiLCJzdWIiOiJwYXRobWFwdG9rZW4iLCJhdWQiOlsiNjQxNjA2MDQ1MzAwMSJdLCJqdGkiOiI2Mzg5NzcwNTgxMTEyIn0.kqriAMUkHT6m0V6wkCHJum_EUyL4PAi1zJMKlfmYHEU/playlist-hls.m3u8
+
 #EXTINF:-1 tvg-id="APUNT.TV,À.Punt.es" tvg-logo="https://graph.facebook.com/apuntmedia/picture?width=200&height=200" group-title="Espanha 🇪🇸",À Punt 🇪🇸
 https://fastly.live.brightcove.com/1846756479408303045/eu-central-1/6057955885001/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJob3N0IjoiZWFxNWh4LmVncmVzcy53YzQ3bTEiLCJhY2NvdW50X2lkIjoiNjA1Nzk1NTg4NTAwMSIsImVobiI6ImZhc3RseS5saXZlLmJyaWdodGNvdmUuY29tIiwiaXNzIjoiYmxpdmUtcGxheWJhY2stc291cmNlLWFwaSIsInN1YiI6InBhdGhtYXB0b2tlbiIsImF1ZCI6WyI2MDU3OTU1ODg1MDAxIl0sImp0aSI6IjE4NDY3NTY0Nzk0MDgzMDMwNDUifQ.o6wb_VA-TVxl3ERgr7FKLlaTjY7smErmsf73QAydySE/playlist-hls-dvr.m3u8
 
@@ -89,8 +89,8 @@ https://fastly.live.brightcove.com/1846756479408303045/eu-central-1/605795588500
 #EXTINF:-1 tvg-id="RTP.1.HD.pt" http-user-agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:93.0) Gecko/20100101 Firefox/93.0" tvg-logo="https://raw.githubusercontent.com/tv-logo/tv-logos/main/countries/portugal/rtp-1-pt.png" group-title="Portugal 🇵🇹",RTP1 🇵🇹
 https://streaming-live.rtp.pt/liverepeater/smil:rtp1HD.smil/playlist.m3u8
 
-#EXTINF:-1 tvg-id="RTP.2.HD.pt" http-user-agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:93.0) Gecko/20100101 Firefox/93.0" tvg-logo="https://raw.githubusercontent.com/tv-logo/tv-logos/main/countries/portugal/rtp-2-pt.png" group-title="Portugal 🇵🇹",RTP2 🇵🇹
-https://streaming-live.rtp.pt/liverepeater/smil:rtp2HD.smil/playlist.m3u8
+#EXTINF:-1 tvg-id="RTP.Notícias.HD.pt" http-user-agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:93.0) Gecko/20100101 Firefox/93.0" tvg-logo="https://cdn-images.rtp.pt/common/img/channels/logos/color/horizontal/rtpnoticias_2026.png" group-title="Portugal 🇵🇹",RTP Notícias 🇵🇹
+https://streaming-live.rtp.pt/livetvhlsDVR/rtpnHDdvr.smil/playlist.m3u8
 
 #EXTINF:-1 tvg-id="SIC.HD.pt,SIC.Alta.Definição.pt" tvg-logo="https://raw.githubusercontent.com/LITUATUI/M3UPT/main/logos/SICAltaDefinicao.pt.png" group-title="Portugal 🇵🇹",SIC Alta Definição 🇵🇹
 https://production-fast-sic.content.okast.tv/fa2e8c4385712f9aa54bbe52b1bd9b6b/channels/d9070446-8448-455e-8075-773b1ba12562/fc831b20-f252-4e7d-8cc5-2d05f4d43c1c/media_.m3u8
@@ -103,6 +103,9 @@ https://cdnapisec.kaltura.com/p/4526593/sp/4526593/playManifest/entryId/1_j8ztwi
 
 #EXTINF:-1 tvg-id="TVI.HD.pt" tvg-logo="https://raw.githubusercontent.com/tv-logo/tv-logos/main/countries/portugal/tvi-pt.png" group-title="Portugal 🇵🇹",TVI 🇵🇹
 https://raw.githubusercontent.com/thomraider12/canaistvpt/main/m3u8s/tvi.m3u8
+
+#EXTINF:-1 tvg-id="tvi.ficcao.pt" tvg-logo="https://cdn.iol.pt/img/logostvi/branco/tvificcao.png" group-title="Portugal 🇵🇹",TVI Ficção 🇵🇹
+https://raw.githubusercontent.com/thomraider12/canaistvpt/main/m3u8s/tvificcao.m3u8
 
 #EXTINF:-1 tvg-id="RTP.Internacional.pt" http-user-agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:93.0) Gecko/20100101 Firefox/93.0" tvg-logo="https://cdn-images.rtp.pt/common/img/channels/logos/color/horizontal/120-312926260903.png" group-title="Portugal 🇵🇹",RTP Internacional 🇵🇹
 https://streaming-live.rtp.pt/liverepeater/smil:rtpi.smil/playlist.m3u8
@@ -163,7 +166,7 @@ https://dai.google.com/linear/hls/event/1XSOdtQ0SH2G8OEmEfGgjQ/master.m3u8
 #EXTINF:-1 tvg-id="New.Brasil.pt" tvg-logo="https://images.pluto.tv/channels/645a99282858cb0008ea8378/colorLogoPNG.png" group-title="Brasil 🇧🇷",New Brasil 🇧🇷
 https://dfr80qz435crc.cloudfront.net/EFGH/Amagi/NewCo/New_Brasil_BR/New_Brasil.m3u8
 
-#EXTINF:-1 tvg-id="São.Paulo/SP..CNN.Brasil.br" tvg-logo="https://raw.githubusercontent.com/tv-logo/tv-logos/main/countries/brazil/cnn-brasil-br.png" group-title="Brasil 🇧🇷",CNN Brasil 🇧🇷
+#EXTINF:-1 tvg-id="CNNBrasil.br" tvg-logo="https://raw.githubusercontent.com/tv-logo/tv-logos/main/countries/brazil/cnn-brasil-br.png" group-title="Brasil 🇧🇷",CNN Brasil 🇧🇷
 https://d25usgadhphvwi.cloudfront.net/hls/main.m3u8
 
 #EXTINF:-1 tvg-logo="https://carastv.com.br/wp-content/uploads/2025/07/tvcaras.png" group-title="Brasil 🇧🇷",Caras TV 🇧🇷
@@ -217,16 +220,13 @@ https://english-livebkali.cgtn.com/live/encgtn.m3u8
 https://hls-m015-live-aka-canalplus.akamaized.net/live/disk/cnews-clair-hd/hls-v3-hd-clair/cnews-clair-hd.m3u8
 
 #EXTINF:-1 tvg-id="DW.pt" tvg-logo="https://raw.githubusercontent.com/iprtl/p1/master/logo/dw.png" group-title="World News 🌍",DW 🇬🇧
-https://dwamdstream102.akamaized.net/hls/live/2015525/dwstream102/index.m3u8?wmsAuthSign=c2VydmVyX3RpbWU9OC8yMy8yMDIxIDEyOjQ3OjU3IFBNJmhhc2hfdmFsdWU9ZkJ0QTd3enJhWUtYSGsrZHFieUZodz09JnZhbGlkbWludXRlcz00ODA=
+https://dwamdstream102.akamaized.net/hls/live/2015525/dwstream102/master.m3u8
 
 #EXTINF:-1 tvg-id="France.24.(engl.).de,France.24.Anglais.fr,FRANCE.24.HD.uk" tvg-logo="https://raw.githubusercontent.com/tv-logo/tv-logos/main/countries/international/france-24-english-int.png" group-title="World News 🌍",France 24 🇫🇷🇬🇧
 https://amg00106-france24-france24-samsunguk-qvpp8.amagi.tv/playlist/amg00106-france24-france24-samsunguk/playlist.m3u8
 
 #EXTINF:-1 tvg-id="GB.News.HD.uk" tvg-logo="https://raw.githubusercontent.com/tv-logo/tv-logos/main/countries/united-kingdom/gb-news-uk.png" group-title="World News 🌍",GB News 🇬🇧
 https://live-gbnews.simplestreamcdn.com/live5/gbnews/bitrate1.isml/manifest.m3u8
-
-#EXTINF:-1 tvg-id="WTVJ-DT.us_locals1" tvg-logo="https://m.media-amazon.com/images/G/01/LCXO_Station_Logos/nbc_south_florida_news.png" group-title="World News 🌍",NBC 6 South Florida 🇺🇸
-https://nbculocallive.akamaized.net/hls/live/2037498/miami/stream1/master.m3u8
 
 #EXTINF:-1 tvg-id="NHK.World.TV.us2,NHK.WORLD-JAPAN.fr" tvg-logo="https://raw.githubusercontent.com/tv-logo/tv-logos/main/countries/international/nhk-world-japan-int.png" group-title="World News 🌍",NHK World Japan 🇯🇵
 https://media-tyo.hls.nhkworld.jp/hls/w/live/master.m3u8
@@ -347,7 +347,7 @@ https://30a-tv.com/feeds/720p/55.m3u8
 #EXTINF:-1 tvg-id="beIN.Sports.En.Español.HD.us2" tvg-logo="https://raw.githubusercontent.com/tv-logo/tv-logos/main/countries/united-states/bein-sports-xtra-espanol-us.png" group-title="Desportos 🌎",Bein Sport Xtra ñ 🇺🇸🇲🇽
 https://dbrb49pjoymg4.cloudfront.net/10001/99991785/hls/playlist.m3u8?ads.xumo_channelId=99991785
 
-#EXTINF:-1 tvg-id="ElGarageTV.es,El.Garage.TV.es" tvg-logo="https://raw.githubusercontent.com/tv-logo/tv-logos/main/countries/argentina/el-garage-tv-ar.png" group-title="Desportos 🌎",Garage TV 🇦🇷🏎️
+#EXTINF:-1 tvg-id="El.Garage.TV.es,ElGarageTV.es" tvg-logo="https://raw.githubusercontent.com/tv-logo/tv-logos/main/countries/argentina/el-garage-tv-ar.png" group-title="Desportos 🌎",Garage TV 🇦🇷🏎️
 https://stream1.sersat.com/hls/garagetv.m3u8
 
 #EXTINF:-1 tvg-logo="https://logo.m3uassets.com/motogp.png" group-title="Desportos 🌎",MotoGP Channel 🏍
