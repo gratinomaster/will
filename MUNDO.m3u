@@ -20,10 +20,14 @@ https://live-pv-ta.amazon.fastly-edge.com/iad-nitro/live/clients/dash/enc/dxnynp
 https://bia-cf.live.pv-cdn.net/iad-nitro/live/clients/dash/enc/fqkgjnprni/out/v1/03443dac525a4c008d1d96fb04f3877a/cenc.mpd
 #EXTINF:-1 tvg-id="Teledeporte.es" tvg-logo="https://raw.githubusercontent.com/tv-logo/tv-logos/main/countries/spain/tdp-es.png" group-title="Espanha 🇪🇸",Teledeporte 🇪🇸
 https://stream.ads.ottera.tv/playlist.m3u8?network_id=15601
-#EXTINF:-1 tvg-logo="https://raw.githubusercontent.com/iprtl/p1/master/logo/Teledeporte.webp" group-title="All Sports 🌎",tdp 🇪🇸
+#EXTINF:-1 tvg-id="TDP.TV" tvg-logo="https://raw.githubusercontent.com/iprtl/p1/master/logo/Teledeporte.webp" group-title="All Sports 🌎",tdp 🇪🇸
 https://stream.ads.ottera.tv/playlist.m3u8?network_id=15601&avod=1&coppa=0&td=6&is_lat=%5BLMT%5D&dnt=%5BDNS%5D&us_privacy=%5BUS_PRIVACY%5D&did=%5BDEVICE_ID%5D&ip=%5BIP%5D&ua=%5BUA%5D&ifa_type=%5BIFA_TYPE%5D&app_bundle=%5BAPP_BUNDLE%5D
 #EXTINF:-1 tvg-id="Clan.TVE.es" tvg-logo="https://raw.githubusercontent.com/tv-logo/tv-logos/main/countries/spain/clan-es.png" group-title="Espanha 🇪🇸",Clan (RTVE) 🇪🇸
 https://stream.ads.ottera.tv/playlist.m3u8?network_id=15620
+#EXTINF:-1 tvg-id="TeleSUR.TV" tvg-logo="https://logo.m3uassets.com/telesur.png" group-title="World News 🌍",teleSUR 🌎
+https://mblenmain01.telesur.ultrabase.net/mblivev3/hd/playlist.m3u8
+#EXTINF:-1 tvg-id="i24.News.English.us2" tvg-logo="https://raw.githubusercontent.com/tv-logo/tv-logos/main/countries/israel/i24-news-il.png" group-title="World News 🌍",i24 News English 🇮🇱
+https://i24newsenglish-cdn.encoders.immergo.tv/master.m3u8
 #EXTINF:-1 tvg-id="Canal.24.horas.es" tvg-logo="https://logo.m3uassets.com/24h.png" group-title="World News 🌍",24h 🇪🇸
 https://stream.ads.ottera.tv/playlist.m3u8?network_id=15621
 #EXTINF:-1 tvg-id="SIC.HD.pt" tvg-logo="https://raw.githubusercontent.com/LITUATUI/M3UPT/main/logos/SICAltaDefinicao.pt.png" group-title="Portugal 🇵🇹",SIC Alta Definição 🇵🇹
@@ -112,8 +116,6 @@ http://170.83.16.50/BAND_NEWS/index.m3u8
 http://170.83.49.66:8083/BANDNEWSHD/index.m3u8
 #EXTINF:-1 tvg-id="Rede.TV.br" tvg-logo="https://i.postimg.cc/C5sP4YzB/rede-tv.png" group-title="Channels 🇧🇷",Rede tv ᴘʀ 🇧🇷
 https://tv02.zas.media:1936/redetvparana/redetvparana/playlist.m3u8
-#EXTINF:-1 tvg-id="Rede.TV.br" tvg-logo="https://i.postimg.cc/C5sP4YzB/rede-tv.png" group-title="TV Aberta",Rede TV
-https://video04.logicahost.com.br/tvpampa/tvpampa/chunklist_w1970019486.m3u8
 #EXTINF:-1 tvg-logo="https://i.ibb.co/F0Tm2WP/2103f4c07b851d64b4c96955765a9a95.png" group-title="Variedades",Rede TV! Mais
 https://cdn.live.br1.jmvstream.com/webtv/AVJ-15235/playlist/playlist.m3u8
 #EXTINF:-1 tvg-id="Rede.TV.br" tvg-logo="https://i.postimg.cc/C5sP4YzB/rede-tv.png" group-title="Variedades",Rede TV! SD
@@ -232,7 +234,7 @@ https://linear-254.frequency.stream/mt/studio/254/hls/master/playlist.m3u8?wowza
 https://jmp2.uk/rok-8e0bb4b7ca7c5ea1af52427462297f38.m3u8
 #EXTINF:-1 tvg-id="ESTRELLA.NEWS.us2" tvg-logo="https://m.media-amazon.com/images/G/01/digital/video/Linear_Clean_Slate/V2/Estrella_News_white.png" group-title="World News 🌍",Estrella News 🇲🇽
 https://cdn-uw2-prod.tsv2.amagi.tv/linear/amg00567-estrellamedia-estrellanews-estrellamedia/playlist.m3u8?wowzasessionid=@iprtlk
-#EXTINF:-1 tvg-logo="https://github.com/iprtl/tv-logos/raw/main/countries/france/bfm-tv-fr.png" group-title="World News 🌍",BFM 🇫🇷
+#EXTINF:-1 tvg-id="BFM.TV.fr" tvg-logo="https://github.com/iprtl/tv-logos/raw/main/countries/france/bfm-tv-fr.png" group-title="World News 🌍",BFM 🇫🇷
 https://live-cdn-stream-euw1.bfmtv.bct.nextradiotv.com/master.m3u8
 #EXTINF:-1 tvg-id="BFM2.fr" tvg-logo="https://i.ibb.co/2MhqYgg/bfm2.png" group-title="World News 🌍",BFM 2 🇫🇷
 https://live-cdn-bfm2-euw1.bfmtv.bct.nextradiotv.com/m5/media.m3u8?bpkio_serviceid=7de32147a4f1055b8812bbac92a24d2e
@@ -390,7 +392,7 @@ https://dash2.antik.sk/live/test_docubox_medium_atk/playlist.m3u8
 https://cdn-uw2-prod.tsv2.amagi.tv/linear/amg01821-lovetvchannels-lovewineusuk-lgau/playlist.m3u8?wowzasessionid=@iprtlk
 #EXTINF:-1 tvg-id="Love.The.Planet.es" tvg-logo="https://images.pluto.tv/channels/65c243143ef47d00084c90a9/colorLogoPNG.png" group-title="Documentaries 🌎",Love The Planet 🇮🇹
 https://cdn-uw2-prod.tsv2.amagi.tv/linear/amg01821-lovetvchannels-lovetheplanetit-xiaomi/playlist.m3u8?wowzasessionid=@iprtlk
-#EXTINF:-1 tvg-logo="https://logo.m3uassets.com/funroads.png" group-title="Documentaries 🌎",Fun Roads TV 🇺🇸
+#EXTINF:-1 tvg-id="Fun.Roads.us2" tvg-logo="https://logo.m3uassets.com/funroads.png" group-title="Documentaries 🌎",Fun Roads TV 🇺🇸
 https://a-cdn.klowdtv.com/live3/funroads_720p/playlist.m3u8
 #EXTINF:-1 group-title="Documentaries 🌎",China Travel 🇺🇸
 https://amg01314-amg01314c7-distrotv-us-10219.playouts.now.amagi.tv/playlist/amg01314-cgtn-cgtnchinatravel-distrotvus/playlist.m3u8
@@ -606,7 +608,7 @@ https://otte.live.fly.ww.aiv-cdn.net/dub-nitro/live/dash/enc/oboxe53wyo/out/v1/f
 https://otte.live.fly.ww.aiv-cdn.net/dub-nitro/live/dash/enc/tepjqej1ys/out/v1/c9c9159baee749a19612b1598495859a/cenc.mpd
 #EXTINF:-1 tvg-logo="https://raw.githubusercontent.com/iprtl/p1/master/logo/FoxSports.webp" group-title="All Sports 🌎",Fox Sports 3 🇲🇽
 https://otte.live.fly.ww.aiv-cdn.net/dub-nitro/live/dash/enc/wybgz0orr8/out/v1/2f6d1612abd44f5883917f8a585b955f/cenc.mpd
-#EXTINF:-1 tvg-logo="https://raw.githubusercontent.com/iprtl/p1/master/logo/Nba.webp" group-title="All Sports 🌎",NBA 🇺🇸🏀
+#EXTINF:-1 tvg-id="NBA.TV.HD.us2" tvg-logo="https://raw.githubusercontent.com/iprtl/p1/master/logo/Nba.webp" group-title="All Sports 🌎",NBA 🇺🇸🏀
 https://otte.live.fly.ww.aiv-cdn.net/dub-nitro/live/clients/dash/enc/2jbycgm3g3/out/v1/066dd9325648468c9ecdc8b272370931/cenc.mpd
 #EXTINF:-1 tvg-id="NFL.Network.HD.us2" tvg-logo="https://cdn.tvpassport.com/image/station/240x135/v2/s34710_h15_aa.png" group-title="All Sports 🌎",NFL Network 🇺🇸
 https://cfrt.stream.peacocktv.com/Content/CMAF_CTR-4s/Live/channel(lc107a1ddy)/master.mpd
@@ -784,7 +786,7 @@ https://stream-hls.bauermedia.pt/m80nacional.aac/playlist.m3u8?listeningSessionI
 https://stream-icy.bauermedia.pt/comercial.mp3
 #EXTINF:-1 tvg-logo="https://play-lh.googleusercontent.com/SCFCFhQUvcgwzg58XUBY9b6TC0qEvITwrfMPqCocvniuhgho3N91iTgIFL2ik1O4-Q" group-title="Radios",Comercial best 00's
 https://stream-icy.bauermedia.pt/rcbest2000.aac
-#EXTINF:-1 tvg-logo="https://upload.wikimedia.org/wikipedia/commons/7/73/Logo_RFM.webp" group-title="Radios",RFM
+#EXTINF:-1 tvg-id="RFM.TV.fr" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/7/73/Logo_RFM.webp" group-title="Radios",RFM
 https://playerservices.streamtheworld.com/api/livestream-redirect/RFM_SC
 #EXTINF:-1 tvg-logo="https://upload.wikimedia.org/wikipedia/commons/7/73/Logo_RFM.webp" group-title="Radios",RFM Dance
 https://stream-icy.bauermedia.pt/m80dance.aac
@@ -940,7 +942,7 @@ https://stmv2.samcast.com.br/sandro9822/sandro9822/playlist.m3u8
 https://tv02.zas.media:1936/wordingtv/wordingtv/chunklist_w1527962150.m3u8
 #EXTINF:-1 tvg-logo="https://i.postimg.cc/s2DpXVcz/xtreme-tv.png" group-title="Recomendados",Xtreme TV
 https://video11.logicahost.com.br/xtremetv/xtremetv/playlist.m3u8
-#EXTINF:-1 tvg-logo="https://i.postimg.cc/tTf06J3D/tvgazeta-logo.jpg" group-title="TV Aberta",Gazeta
+#EXTINF:-1 tvg-id="TV.Gazeta.br" tvg-logo="https://i.postimg.cc/tTf06J3D/tvgazeta-logo.jpg" group-title="TV Aberta",Gazeta
 https://video08.logicahost.com.br/tvc21/tvc21/chunklist_w1728739889.m3u8
 #EXTINF:-1 tvg-logo="https://i.postimg.cc/cHDQddGC/rede-utvbrasil.png" group-title="TV Aberta",Rede UTV Brasil
 https://utvitv.acessaradios.com.br/utvitv/utvitv.stream/chunklist_w1641872797.m3u8
@@ -1050,7 +1052,7 @@ http://45.162.64.114/TV_BRASIL/index.m3u8
 https://video10.logicahost.com.br/tvbrasilangola/tvbrasilangola/playlist.m3u8
 #EXTINF:-1 tvg-logo="https://i.postimg.cc/fWYmFj7D/tv_brasil_sinop.jpg" group-title="Variedades",TV Brasil Sinop
 https://stmv7.voxtvhd.com.br/tvbrasilsinop/tvbrasilsinop/playlist.m3u8
-#EXTINF:-1 tvg-logo="https://raw.githubusercontent.com/tv-logo/tv-logos/main/countries/brazil/cancao-nova-tv-br.png" group-title="Variedades",TV Cancao Nova
+#EXTINF:-1 tvg-id="Canção.Nova.pt" tvg-logo="https://raw.githubusercontent.com/tv-logo/tv-logos/main/countries/brazil/cancao-nova-tv-br.png" group-title="Variedades",TV Cancao Nova
 http://45.162.64.114/CANCAO_NOVA/index.m3u8
 #EXTINF:-1 tvg-logo="https://i.postimg.cc/0QCKYQpS/tv-carioca.jpg" group-title="Variedades",TV Carioca
 https://video03.logicahost.com.br/cariocainternacional1/cariocainternacional1/playlist.m3u8
@@ -1244,7 +1246,7 @@ https://644398c.ha.azioncdn.net/primary/tvuniversal_480p.sdp/playlist.m3u8
 http://45.162.64.114/AGRO_CANAL/index.m3u8
 #EXTINF:-1 group-title="Educação",Canal Educacao
 http://45.162.64.114/CANAL_EDUCACAO/index.m3u8
-#EXTINF:-1 tvg-logo="https://raw.githubusercontent.com/tv-logo/tv-logos/main/countries/brazil/futura-br.png" group-title="Educação",Canal Futura
+#EXTINF:-1 tvg-id="Futura.br" tvg-logo="https://raw.githubusercontent.com/tv-logo/tv-logos/main/countries/brazil/futura-br.png" group-title="Educação",Canal Futura
 http://45.162.64.114/FUTURA/index.m3u8
 #EXTINF:-1 tvg-id="Futura.br" tvg-logo="https://raw.githubusercontent.com/tv-logo/tv-logos/main/countries/brazil/futura-br.png" group-title="Educação",Futura
 http://168.197.104.22/FUTURA/index.m3u8
@@ -1606,7 +1608,7 @@ https://newidco-newkid-1-eu.plex.wurl.tv/playlist.m3u8
 https://classicarts.akamaized.net/hls/live/1024257/CAS/master.m3u8
 #EXTINF:-1 group-title="Music",Afrobeats
 https://stream.ecable.tv/afrobeats/index.m3u8
-#EXTINF:-1 tvg-id="Qwest.TV.es" group-title="Music",Qwest TV
+#EXTINF:-1 tvg-logo="https://orangetv.orange.es/pc/api/rtv/v1/images/attachments_new/QWEST_TV_176x122.png" tvg-id="Qwest.TV.es" group-title="Music",Qwest TV
 https://qwest-jazz-plex.amagi.tv/playlist.m3u8
 #EXTINF:-1 group-title="Music",SPIN
 https://bec-spin-1-us.plex.wurl.tv/playlist.m3u8
@@ -1618,7 +1620,7 @@ https://58f12ffd2447a.streamlock.net/KKMulti/livestream/playlist.m3u8
 https://cdn-apse1-prod.tsv2.amagi.tv/linear/amg01076-lightningintern-traceurban-samsungnz/playlist.m3u8
 #EXTINF:-1 tvg-logo="https://i.ibb.co/g3YTn6c/geneok.png" group-title="Music",GÉNÉRATIONS TV
 https://edge11.vedge.infomaniak.com/livecast/ik:generation-tv/manifest.m3u8
-#EXTINF:-1 tvg-id="Vevo.True.School.Hip-Hop.us2" group-title="Music",Vevo True School Hip-Hop
+#EXTINF:-1 tvg-logo="http://dtil.tmsimg.com/assets/s122262_ll_h15_ab.png?w=360&h=270" tvg-id="Vevo.True.School.Hip-Hop.us2" group-title="Music",Vevo True School Hip-Hop
 http://cfd-v4-service-channel-stitcher-use1-1.prd.pluto.tv/stitch/hls/channel/61d4c2817a823d00070ba53e/master.m3u8?appName=web&appVersion=unknown&clientTime=0&deviceDNT=0&deviceId=6c2ce918-30d3-11ef-9cf5-e9ddff8ff496&deviceMake=Chrome&deviceModel=web&deviceType=web&deviceVersion=unknown&includeExtendedEvents=false&serverSideAds=false&sid=90c1dbc6-366d-4ba4-913a-7ff94babe33e
 #EXTINF:-1 tvg-id="USA.br" group-title="Music",CMC-USA
 https://mediaplatform.streamingmediahosting.com/p/14215/sp/1421500/playManifest/entryId/0_obd393sh/format/applehttp/protocol/https/a.m3u8
@@ -1720,8 +1722,6 @@ https://skynewsau-live-premium.akamaized.net/hls/live/2105299/skynews/live.m3u8
 https://dqco14bu26p3z.cloudfront.net/30505/89006005/hls/master.m3u8?ads.xumo_channelId=89006005&ads.xumo_streamId=89006005
 #EXTINF:-1 tvg-id="Telemundo.Satellite.Feed.us2" tvg-logo="https://raw.githubusercontent.com/tv-logo/tv-logos/main/countries/united-states/telemundo-us.png" group-title="World News 🌍",Telemundo Al Día 🇲🇽
 https://dbrb49pjoymg4.cloudfront.net/v1/master/3fec3e5cac39a52b2132f9c66c83dae043dc17d4/prod_default_xumo-ams-aws/master.m3u8?ads.xumo_channelId=99991747
-#EXTINF:-1 tvg-id="TRT.World.uk" tvg-logo="https://raw.githubusercontent.com/tv-logo/tv-logos/main/countries/turkey/trt-world-tr.png" group-title="World News 🌍",TRT World 🇬🇧
-https://tv-trtworld.medya.trt.com.tr/master.m3u8
 #EXTINF:-1 tvg-id="TV5.Monde.pt" tvg-logo="https://logo.m3uassets.com/tv5mondeinfo.png" group-title="World News 🌍",Tv5 Monde Info 🇫🇷
 https://d161b1o6wfc5a3.cloudfront.net/v1/master/3722c60a815c199d9c0ef36c5b73da68a62b09d1/cc-3u7sgewc3l8ri/tvfm.m3u8
 #EXTINF:-1 tvg-logo="https://raw.githubusercontent.com/tv-logo/tv-logos/main/misc/vod/yahoo-finance-vod.png" group-title="World News 🌍",Yahoo! Finance 🇺🇸
