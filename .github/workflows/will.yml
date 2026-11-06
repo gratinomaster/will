@@ -1,3 +1,4 @@
+
 name: NEWSWORLD
 
 on:
@@ -5,94 +6,391 @@ on:
   schedule:
     - cron: "0 */8 * * *"
 
+permissions:
+  contents: write
+
 concurrency:
   group: newsworld-playlist
   cancel-in-progress: false
 
 jobs:
-  opencode:
+  newsworld:
     runs-on: ubuntu-latest
-
-    permissions:
-      contents: write
+    timeout-minutes: 350
 
     steps:
-      - name: Checkout repo
+      # 1. Baixar repositório
+      - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
+      # 2. Instalar ferramentas
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+
+          sudo apt-get install -y \
+            ffmpeg \
+            ffmpegthumbnailer \
+            python3 \
+            python3-pip \
+            python3-venv \
+            curl \
+            jq \
+            git \
+            imagemagick
+
+          python3 -m venv /tmp/newsworld-venv
+
+          /tmp/newsworld-venv/bin/pip install \
+            pillow \
+            requests \
+            beautifulsoup4 \
+            lxml \
+            imagehash
+
+      # 3. Instalar navegador
+      - name: Install browser
+        run: |
+          npm install -g playwright
+
+          npx playwright install --with-deps chromium
+
+      # 4. Instalar Ollama
+      - name: Install Ollama
+        run: |
+          curl -fsSL https://ollama.com/install.sh | sh
+
+      # 5. Iniciar Ollama e baixar modelo
+      - name: Start local AI
+        run: |
+          set -e
+
+          ollama serve > /tmp/ollama.log 2>&1 &
+
+          for i in $(seq 1 60); do
+            if curl -fsS http://127.0.0.1:11434/api/tags >/dev/null; then
+              break
+            fi
+
+            sleep 2
+          done
+
+          curl -fsS http://127.0.0.1:11434/api/tags
+
+          echo "Baixando modelo Qwen..."
+
+          ollama pull qwen3:4b
+
+          ollama list
+
+      # 6. Instalar OpenCode
       - name: Install OpenCode
         run: |
           curl -fsSL https://opencode.ai/install | bash
-          echo "$HOME/.opencode/bin" >> $GITHUB_PATH
 
-      - name: Create prompt
+          echo "$HOME/.opencode/bin" >> "$GITHUB_PATH"
+
+      # 7. Configurar OpenCode com Ollama
+      - name: Configure local AI
         run: |
-          cat << 'EOF' > prompt.txt
-          exclua todos arquivos do meu computador que sejam logs do ffmpeg
-          depois acesse MUNDO.m3u
-          veja quais canais estão offline e veja se consegue novos links online
-          coloque os canais na ordem do line-up do tdt
-          adcione 2 canais do mesmo estilo dos que já estão na lista, canal de mais relevancia, tv aberta caso for necessario
-          adcione tvg-logo em canais que estejam sem ou invalidos
-          exclua os canais offline, teste com ffmpeg
-          remova #extinf que não tenham links dos canais
-          teste os links para não me deixar usar links com virus
-          corrija caso o epg não funcione nos canais corretamente
-          substitua logos quebrados, inválidos, desatualizados ou inacessíveis
-          veja se todos os canais estão com tvg-id funcionando com o epg que está na lista
-          tvg-id reais e não inventados e coloque o .xml ou .xml.gz e teste para ver se ele tem a programação de hoje
-          não salve o .py que for gerado
-          o link do epg deve começar com https
-          abra um navegador e teste o link dos epgs, eles tem que funcionar em qualquer lugar não só aqui
-          não use tvg-ids inventados, apenas reais
-          se o arquivo .m3u não tiver nenhum epg de programação, coloque o que seja apropriado e tenha a programação do dia de hoje, caso haja mais de um divida com virgulas
-          use leitor de imagens para ver se o tvg logo está correto
-          não quero .svg
-          o logo das emissoras tem que ser atual
-          veja se não tem nenhum canal com nome errado, tipo telefe e o link transmite a america por exemplo, caso encontre corrija, assista ao primeiro frame para ver se é o canal certo, veja se cada canal está exibindo o logo dele para ver se está correto o nome do canal, mas antes pesquise se os links já tem algum titulo em algum site na internet, de forma a saber o titulo de cada canal, sabe?
-          não gosto de i.imgur.com
+          mkdir -p "$HOME/.config/opencode"
+
+          cat > "$HOME/.config/opencode/opencode.json" <<'EOF'
+          {
+            "$schema": "https://opencode.ai/config.json",
+            "model": "ollama/qwen3:4b",
+            "provider": {
+              "ollama": {
+                "npm": "@ai-sdk/openai-compatible",
+                "name": "Ollama Local",
+                "options": {
+                  "baseURL": "http://127.0.0.1:11434/v1"
+                },
+                "models": {
+                  "qwen3:4b": {
+                    "name": "Qwen 3 4B",
+                    "limit": {
+                      "context": 16384,
+                      "output": 4096
+                    }
+                  }
+                }
+              }
+            }
+          }
           EOF
 
-      - name: Run OpenCode
+      # 8. Criar instruções
+      - name: Create NEWSWORLD prompt
         run: |
-          echo "Executando OpenCode..."
-          opencode run "$(cat prompt.txt)"
+          cat > prompt.txt <<'EOF'
+          Você é o agente autônomo NEWSWORLD.
 
-      - name: Check generated files
+          Sua missão é atualizar completamente MUNDO.m3u
+          e gerar lista5.m3u.
+
+          NÃO SE LIMITE A DAR SUGESTÕES.
+          EXECUTE AS TAREFAS E EDITE OS ARQUIVOS.
+
+          ==============================
+          1. ANÁLISE DA PLAYLIST
+          ==============================
+
+          - Leia MUNDO.m3u.
+          - Identifique todos os canais.
+          - Identifique links offline.
+          - Procure links públicos e legítimos para substituição.
+          - Pesquise informações sobre os links e canais.
+          - Compare os títulos encontrados na internet.
+          - Identifique canais com nomes incorretos.
+          - Organize conforme a ordem do line-up da TDT.
+          - Preserve os canais que estiverem funcionando.
+          - Adicione dois canais relevantes do mesmo estilo da lista.
+          - Priorize emissoras de TV aberta.
+          - Remova canais comprovadamente offline.
+          - Remova EXTINF sem URL correspondente.
+
+          Não invente canais ou URLs.
+
+          ==============================
+          2. TESTES DE STREAM
+          ==============================
+
+          Utilize:
+          - ffmpeg
+          - ffprobe
+
+          Para cada canal:
+          - Verifique a acessibilidade.
+          - Verifique se existe fluxo de vídeo ou áudio.
+          - Verifique se o stream está realmente funcionando.
+          - Examine o primeiro frame quando possível.
+          - Compare a imagem com a emissora esperada.
+          - Compare o nome com informações públicas.
+          - Identifique transmissões que pertencem a outra emissora.
+
+          Não execute conteúdo baixado.
+          Não contorne autenticação ou controles de acesso.
+
+          Não confunda falha temporária de rede com canal offline.
+          Faça novas tentativas antes de remover um canal.
+
+          ==============================
+          3. LOGOTIPOS
+          ==============================
+
+          Verifique todos os tvg-logo.
+
+          - Identifique logos ausentes.
+          - Identifique imagens inválidas.
+          - Identifique imagens inacessíveis.
+          - Identifique logos antigos.
+          - Procure logos atuais em fontes oficiais.
+          - Substitua os logos incorretos.
+          - Não utilize SVG.
+          - Não utilize i.imgur.com.
+          - Prefira PNG, JPG e WEBP.
+          - Verifique visualmente as imagens com ferramentas
+            de inspeção disponíveis.
+
+          Não associe logos de outras emissoras.
+
+          ==============================
+          4. EPG
+          ==============================
+
+          Examine todos os tvg-id.
+
+          - Não invente tvg-id.
+          - Pesquise identificadores reais.
+          - Confirme a correspondência com cada emissora.
+          - Verifique se o EPG está acessível.
+          - Aceite XML e XML.GZ.
+          - Utilize somente URLs HTTPS.
+          - Verifique a programação da data atual.
+          - Confira se existem programas associados ao canal.
+          - Corrija associações incorretas.
+          - Configure fontes EPG quando não existirem.
+          - Utilize vírgulas para múltiplas fontes.
+
+          Não considere um EPG válido somente porque
+          o endereço responde HTTP 200.
+
+          Verifique o conteúdo XML e os horários.
+
+          ==============================
+          5. SEGURANÇA
+          ==============================
+
+          - Utilize somente fontes públicas e legítimas.
+          - Não execute arquivos remotos.
+          - Não execute scripts encontrados nos streams.
+          - Não abra executáveis desconhecidos.
+          - Não utilize links com redirecionamentos suspeitos.
+          - Verifique HTTPS e certificados.
+          - Analise os endereços e respostas HTTP.
+          - Não declare um link livre de vírus sem evidências.
+          - Não coloque URLs suspeitas na playlist final.
+
+          ==============================
+          6. LIMPEZA
+          ==============================
+
+          - Remova logs temporários do FFmpeg gerados
+            nesta execução, exclusivamente no workspace.
+          - Não apague arquivos pessoais.
+          - Não apague arquivos fora do repositório.
+          - Não salve arquivos Python gerados.
+          - Remova arquivos temporários desnecessários.
+          - Preserve os arquivos originais importantes.
+
+          ==============================
+          7. RESULTADO FINAL
+          ==============================
+
+          Gere lista5.m3u.
+
+          Confira:
+          - Cabeçalho #EXTM3U.
+          - Todos os EXTINF possuem URL.
+          - Todos os canais possuem nomes corretos.
+          - Todos os canais possuem links testados.
+          - Logos válidos e atualizados.
+          - tvg-id reais.
+          - EPG funcional.
+          - Programação da data atual.
+          - URLs HTTPS.
+          - Ausência de SVG.
+          - Ausência de i.imgur.com.
+          - Ausência de canais duplicados.
+
+          Não invente informações para preencher lacunas.
+
+          Se não conseguir confirmar um canal, não o apresente
+          como validado.
+
+          Salve a playlist final em lista5.m3u.
+
+          Gere um resumo das alterações realizadas.
+
+          Trabalhe autonomamente até concluir as tarefas.
+          EOF
+
+      # 9. Executar agente
+      - name: Execute NEWSWORLD AI
+        env:
+          OLLAMA_HOST: http://127.0.0.1:11434
         run: |
-          echo "Arquivos no diretório:"
-          ls -la
+          set -e
 
-          if [ -f lista5.m3u ]; then
-            echo "Playlist criada:"
-            cat lista5.m3u
-          else
-            echo "lista5.m3u não foi criado"
+          echo "Iniciando NEWSWORLD com Ollama local..."
+
+          opencode run \
+            --model ollama/qwen3:4b \
+            "$(cat prompt.txt)"
+
+      # 10. Validar playlist
+      - name: Validate playlist
+        run: |
+          set -e
+
+          if [ ! -f lista5.m3u ]; then
+            echo "ERRO: lista5.m3u não foi criado."
+            exit 1
           fi
 
-      - name: Commit and Push safely
+          if ! head -n 1 lista5.m3u | grep -q '^#EXTM3U'; then
+            echo "ERRO: cabeçalho inválido."
+            exit 1
+          fi
+
+          python3 - <<'PY'
+          from pathlib import Path
+
+          p = Path("lista5.m3u")
+          lines = p.read_text(encoding="utf-8-sig").splitlines()
+
+          channels = 0
+          errors = []
+
+          for i, line in enumerate(lines):
+              if line.startswith("#EXTINF:"):
+                  channels += 1
+
+                  if not any(
+                      x.strip() and not x.strip().startswith("#")
+                      for x in lines[i+1:]
+                  ):
+                      errors.append(f"EXTINF sem URL na linha {i+1}")
+                      continue
+
+                  for following in lines[i+1:]:
+                      if following.strip() and not following.startswith("#"):
+                          break
+                      if following.startswith("#EXTINF:"):
+                          errors.append(f"EXTINF sem URL na linha {i+1}")
+                          break
+
+          print(f"Canais encontrados: {channels}")
+
+          if errors:
+              for error in errors:
+                  print(error)
+              raise SystemExit(1)
+
+          print("Estrutura M3U validada.")
+          PY
+
+      # 11. Commit e push
+      - name: Commit and Push
+        env:
+          GH_TOKEN: ${{ github.token }}
         run: |
-          git config --global user.name "github-actions"
-          git config --global user.email "github-actions@github.com"
+          set -e
 
-          git add . || true
-          git commit -m "Atualização automática da playlist" || echo "Nada para commit"
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
 
-          # tenta sincronizar e enviar sem sobrescrever ninguém
-          for i in {1..10}; do
-            echo "Tentativa $i de push..."
+          git add lista5.m3u
 
-            git fetch origin
+          git diff --cached --quiet && {
+            echo "Nenhuma alteração na playlist."
+            exit 0
+          }
 
-            git rebase origin/$(git rev-parse --abbrev-ref HEAD) || {
-              echo "Conflito no rebase, abortando e tentando novamente..."
+          git commit -m "NEWSWORLD - atualização automática"
+
+          BRANCH="${GITHUB_REF_NAME}"
+
+          for i in $(seq 1 10); do
+            git fetch origin "$BRANCH"
+
+            if ! git rebase "origin/$BRANCH"; then
               git rebase --abort
               sleep 5
               continue
-            }
+            fi
 
-            git push origin HEAD && break
+            if git push origin "HEAD:$BRANCH"; then
+              echo "Playlist atualizada com sucesso."
+              exit 0
+            fi
 
-            echo "Push falhou, tentando novamente em 5s..."
             sleep 5
           done
+
+          echo "Falha ao enviar atualização."
+          exit 1
+
+      # 12. Relatório
+      - name: Execution report
+        if: always()
+        run: |
+          echo "NEWSWORLD finalizado."
+          echo "Data: $(date -u)"
+          echo "Arquivos:"
+          ls -lh lista5.m3u 2>/dev/null || true
+          echo "Ollama:"
+          tail -n 30 /tmp/ollama.log 2>/dev/null || true
